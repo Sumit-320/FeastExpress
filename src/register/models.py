@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
 
 class Manager(BaseUserManager): # to manage the custom user
-    def create_user(self,username,f_name,l_name,email,password=None):
+    def create_user(self,username,f_name,l_name,email,contact,password=None):
         if not username:
             raise ValueError("User shall have a valid username!!")
         if not email:
@@ -13,18 +13,20 @@ class Manager(BaseUserManager): # to manage the custom user
             username=username,
             f_name=f_name,
             l_name=l_name,
+            contact=contact,
             email= self.normalize_email(email), # to handle case sensitivity in user input of email ID
         )
-        user.set_password()
+        user.set_password(password)
         user.save(using = self._db) #default db in settings.py (postgres one--> feastDB)
         return user
 
-    def create_superuser(self,username,f_name,l_name,email,password=None):
+    def create_superuser(self,username,f_name,l_name,email,contact,password=None):
         user = self.create_user(
             username=username,
             f_name=f_name,
             l_name=l_name,
             password = password,
+            contact=contact,
             email = self.normalize_email(email),
         )
         # after creating normal user, we assign them addtitional properties(necessary for superuser)
