@@ -91,4 +91,4 @@ class Profile2(models.Model):  # for customer
 
     def __str__(self):
         return self.user.email
-    
+ 

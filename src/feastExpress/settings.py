@@ -126,6 +126,10 @@ STATICFILES_DIRS = [
     'feastExpress/static',
 ]
 
+# User - Customer/Vendor Media files (Bg_pic and Profile pics)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'mediafiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
