@@ -1,13 +1,12 @@
 from django.shortcuts import render,HttpResponse,redirect
+from django.contrib import messages
 from .forms import UserForm
 from .models import User
 # Create your views here.
 def registerUser(request):
     if request.method == 'POST':
-        print(request.POST)
         form = UserForm(request.POST)
         if form.is_valid():
-            
             f_name = form.cleaned_data['f_name']
             l_name = form.cleaned_data['l_name']
             username= form.cleaned_data['username']
@@ -18,9 +17,13 @@ def registerUser(request):
             user = User.objects.create_user(f_name=f_name,l_name=l_name,password=password,username=username,contact=contact,email=email)
             user.type = User.Buyer
             user.save()
+            messages.success(request,"User Registered Successfully!")
             return redirect('registerUser')
+        else:
+            print(form.errors) # reason for invalid form
     else:
         form = UserForm()
+        
     context = {
         'form':form,
     }
