@@ -1,118 +1,114 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-		<!-- Main Section Start -->
-		<div class="main-section">
-			<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 60px;margin-bottom: 0px;">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-							<div class="user-dashboard loader-holder">
-								<div class="user-holder">
-                            <h4 class="text-center " style="margin-bottom: 0; font-family: 'Courier New', Courier, monospace;">Welcome To FeastExpress !!</h4>
-                            <p class="text-center">Sell Your Services at our Marketplace !!</p>
-                            <hr>
+<!-- Main Section Start -->
+<div class="main-section" style="background-image: url('{% static 'extra-images/banner-img4.webp' %}'); background-size: cover; background-position: center center; padding: 50px 0;">
+    <div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 60px;margin-bottom: 0px;">
+        <div class="container" style="display: flex; justify-content: left; align-items: center; height: 100vh;">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder" style="min-height:auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;">
+                        <div class="user-holder">
+                            <h4 class="text-center" style="font-family: 'Courier New', Courier, monospace; color: #2c3e50; margin-bottom: 20px;">Welcome To FeastExpress!</h4>
+                            <p class="text-center" style="font-size: 16px; color: #7f8c8d;">Sell Your Services at our Marketplace!</p>
+                            <hr style="border: 1px solid #ecf0f1; margin: 20px 0;">
                             <div id="restaurant-sets-holder">
-                                <!--action to submit a form to the view registerUser along with csrf token for security-->
-                                <form action = {% url "registerVendor" %} class="form-fields-set foodbakery-dev-restaurant-form" method="post" action="register-select-package.html" enctype="multipart/form-data"> <!--to receive files in forms-->
+                                <!-- Form to submit to registerVendor with csrf token -->
+                                <form action="{% url 'registerVendor' %}" class="form-fields-set foodbakery-dev-restaurant-form" method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
                                         <li>
                                             <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="row">
-                                                        <ul >
-                                                            <li>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>First name</label>{{form.f_name}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Last name</label>{{form.l_name}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Restaurant Name</label>
-                                                                        {{form_vendor.name}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Username</label>{{form.username}}
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </li>
-                                                            
-                                                            <li>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Password</label>
-                                                                        {{form.password}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Confirm Password</label>
-                                                                        {{form.confirm_password}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Email Address</label>{{form.email}}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div class="field-holder">
-                                                                        <label>Restaurant License</label>
-                                                                        {{form_vendor.license}}
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="f_name" style="font-weight: 600; color: #34495e;">First name</label>
+                                                        {{form.f_name}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="l_name" style="font-weight: 600; color: #34495e;">Last name</label>
+                                                        {{form.l_name}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="restaurant_name" style="font-weight: 600; color: #34495e;">Restaurant Name</label>
+                                                        {{form_vendor.name}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="username" style="font-weight: 600; color: #34495e;">Username</label>
+                                                        {{form.username}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
-                                            <ul class="errorlist">
-                                                {% for field in form%}
-                                                    {% if field.errors %}
-                                                        {% for error in field.errors %}
-                                                            <li style="color: red;">{{error}}</li><!--Print all errors -->
-                                                        {% endfor %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            <li style="color : red;">{{form.non_field_errors}}</li> <!--to display the validation error message -->
-                                            </ul>
-                                            <!--Below is the submit button-->
                                             <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                     <div class="field-holder">
-                                                        <div class="payment-holder">
-                                                            <input type="submit" value="Register" id="btn-next-restaurant-information" class="bgcolor">
-                                                        </div>
+                                                        <label for="password" style="font-weight: 600; color: #34495e;">Password</label>
+                                                        {{form.password}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="confirm_password" style="font-weight: 600; color: #34495e;">Confirm Password</label>
+                                                        {{form.confirm_password}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="email" style="font-weight: 600; color: #34495e;">Email Address</label>
+                                                        {{form.email}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="field-holder">
+                                                        <label for="license" style="font-weight: 600; color: #34495e;">Restaurant License</label>
+                                                        {{form_vendor.license}}
                                                     </div>
                                                 </div>
                                             </div>
+                                        </li>
+                                        <li>
+                                            <!-- Display validation errors -->
+                                            <ul class="errorlist" style="color: red;">
+                                                {% for field in form %}
+                                                    {% if field.errors %}
+                                                        {% for error in field.errors %}
+                                                            <li>{{error}}</li>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <li>{{form.non_field_errors}}</li>
+                                            </ul>
+                                            <!-- Submit Button -->
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="field-holder text-center">
+                                                        <input type="submit" value="Register" class="bgcolor" style="background-color: #2ecc71; border: none; color: white; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Alerts Section -->
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     {% include "parts/alerts.html" %}
                                                 </div>
                                             </div>
-
                                         </li>
                                     </ul>
                                 </form>
                             </div>
                         </div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Main Section End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
 {% endblock content %}

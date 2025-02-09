@@ -19,7 +19,7 @@ def registerUser(request):
             user.type = User.Buyer
             user.save()
             messages.success(request,"User Registered Successfully!")
-            return redirect('registerUser')
+            return redirect('signup')
         else:
             print(form.errors) # reason for invalid form
     else:
@@ -65,3 +65,11 @@ def registerVendor(request):
         'form_vendor':form_vendor,
     }
     return render(request,'register/registerVendor.html',context)
+
+def login(request):
+    return render(request,'register/login.html')
+
+def signup(request):
+    return render(request,'register/registerUser.html')
+def dashboard(request):
+    pass
