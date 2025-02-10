@@ -9,12 +9,12 @@
                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
                     <div class="user-dashboard loader-holder" style="min-height:auto; width:100%; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;">
                         <div class="user-holder">
-                            <h3 class="text-center" style="font-family: 'Courier New', Courier, monospace; color: #2c3e50; margin-bottom: 20px;">Welcome To FeastExpress!</h3>
+                            <h2 class="text-center" style="font-family: 'Courier New', Courier, monospace; color: #2c3e50; margin-bottom: 20px;">Welcome To FeastExpress !!</h2>
                             <p class="text-center" style="font-size: 16px; color: #7f8c8d;">Please enter your credentials to login.</p>
                             <hr style="border: 1px solid #ecf0f1; margin: 20px 0;">
                             <div id="restaurant-sets-holder">
                                 <!-- Form to submit to registerUser with csrf token -->
-                                <form action="{% url 'login' %}" method="post" class="form-fields-set foodbakery-dev-restaurant-form">
+                                <form action="{% url 'login' %}" method="POST" class="form-fields-set foodbakery-dev-restaurant-form">
                                     {% csrf_token %}
                                     <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
                                         <li>
@@ -27,8 +27,8 @@
                                                 </div> 
                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                                     <div class="field-holder">
-                                                        <label for="Password" style="font-weight: 600; color: #34495e;"><h4>Password</h4></label>
-                                                        <input type="password" name="Password" id="Password" placeholder="Enter your Password" class="form-control" style="border-radius: 5px; border: 1px solid #ccc; padding: 10px; font-size: 16px; width: 100%; margin-bottom: 20px;">
+                                                        <label for="password" style="font-weight: 600; color: #34495e;"><h4>Password</h4></label>
+                                                        <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control" style="border-radius: 5px; border: 1px solid #ccc; padding: 10px; font-size: 16px; width: 100%; margin-bottom: 20px;">
                                                     </div>
                                                 </div>
                                             </div>

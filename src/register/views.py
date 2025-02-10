@@ -1,11 +1,14 @@
 from django.shortcuts import render,HttpResponse,redirect
-from django.contrib import messages
+from django.contrib import messages, auth
 from .forms import UserForm
 from vendor.forms import VendorForm
 from .models import User, Profile2
 # Create your views here.
 def registerUser(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        messages.warning(request,"You are already registered!!")
+        return redirect('dashboard')
+    elif request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             f_name = form.cleaned_data['f_name']
@@ -31,7 +34,10 @@ def registerUser(request):
     return render(request,'register/registerUser.html',context)
 
 def registerVendor(request):
-    if request.method=='POST':
+    if request.user.is_authenticated:
+        messages.warning(request,"You are already registered!!")
+        return redirect('dashboard')
+    elif request.method=='POST':
         form = UserForm(request.POST)
         form_vendor= VendorForm(request.POST,request.FILES)
         if form.is_valid() and form_vendor.is_valid():
@@ -67,9 +73,29 @@ def registerVendor(request):
     return render(request,'register/registerVendor.html',context)
 
 def login(request):
+    if request.user.is_authenticated:
+        messages.warning(request,"You are Logged In!")
+        return redirect('dashboard')
+    if request.method=='POST':
+        email = request.POST.get('email')
+        password= request.POST.get('password')
+        user = auth.authenticate(email=email,password=password)
+        if user is not None: # -->user exists
+            auth.login(request,user)
+            messages.success(request,'Logged In Successfully!')
+            return redirect('dashboard')
+        else:
+            messages.error(request,"Invalid Credentials, Try Again!")
+            return redirect('login')
+
     return render(request,'register/login.html')
 
 def signup(request):
     return render(request,'register/registerUser.html')
 def dashboard(request):
-    pass
+    return render(request,'register/dashboard.html')
+
+def logout(request):
+    auth.logout(request)
+    messages.info(request,"Logged Out Successfully!")
+    return redirect('login')

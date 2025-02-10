@@ -71,6 +71,14 @@ class User(AbstractBaseUser): # custom user --> not the django default
         return self.is_admin
     def has_module_perms(self,app_label):
         return True
+    def get_type(self):
+        if self.type==1:
+            user_type='Vendor'
+        elif self.type==2:
+            user_type='Customer'
+        return user_type    
+
+    
 
 # upon creation of user, profile will not be created automatically!!
 
