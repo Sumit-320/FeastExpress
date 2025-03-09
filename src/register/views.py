@@ -16,11 +16,10 @@ def registerUser(request):
             username= form.cleaned_data['username']
             password= form.cleaned_data['password']
             email= form.cleaned_data['email']
-            contact = form.cleaned_data['contact']
             # create_user --> under class Manager to manage user profile
-            user = User.objects.create_user(f_name=f_name,l_name=l_name,password=password,username=username,contact=contact,email=email)
+            user = User.objects.create_user(f_name=f_name,l_name=l_name,username=username,password=password,email=email)
             user.type = User.Buyer
-            user.save()
+            user.save() 
             messages.success(request,"User Registered Successfully!")
             return redirect('signup')
         else:
@@ -38,22 +37,21 @@ def registerVendor(request):
         messages.warning(request,"You are already registered!!")
         return redirect('dashboard')
     elif request.method=='POST':
-        form = UserForm(request.POST)
-        form_vendor= VendorForm(request.POST,request.FILES)
-        if form.is_valid() and form_vendor.is_valid():
+        form = UserForm(request.POST)# to pass the contents from post request
+        v_form  = VendorForm(request.POST,request.FILES)
+        if form.is_valid() and v_form.is_valid:
             f_name = form.cleaned_data['f_name']
             l_name = form.cleaned_data['l_name']
             username= form.cleaned_data['username']
             password= form.cleaned_data['password']
             email= form.cleaned_data['email']
-            contact = form.cleaned_data['contact']
-            user = User.objects.create_user(f_name=f_name,l_name=l_name,password=password,username=username,contact=contact,email=email)
+            user = User.objects.create_user(f_name=f_name,l_name=l_name,username=username,password=password,email=email)
             user.type= User.Seller
             user.save()
-            vendor=form_vendor.save(commit=False)# data is preserved inside the object
+            vendor=v_form.save(commit=False)# data is preserved inside the object
             vendor.user=user
-            profile=Profile2.objects.get(user=user)
-            vendor.profile=profile
+            u_profile=Profile2.objects.get(user=user)
+            vendor.profile=u_profile
             vendor.save()
             messages.success(request,'Your Vendor Account is Registered, Wait for Approval')
             return redirect('registerVendor')
@@ -63,12 +61,12 @@ def registerVendor(request):
 
     else:
         form = UserForm()
-        form_vendor= VendorForm()
+        v_form= VendorForm()
 
 
     context = {
         'form':form,
-        'form_vendor':form_vendor,
+        'v_form':v_form,
     }
     return render(request,'register/registerVendor.html',context)
 
@@ -77,21 +75,21 @@ def login(request):
         messages.warning(request,"You are Logged In!")
         return redirect('dashboard')
     if request.method=='POST':
-        email = request.POST.get('email')
-        password= request.POST.get('password')
+        email = request.POST['email']#name of input field of sign-in form
+        password= request.POST['password']
         user = auth.authenticate(email=email,password=password)
         if user is not None: # -->user exists
             auth.login(request,user)
             messages.success(request,'Logged In Successfully!')
             return redirect('dashboard')
         else:
-            messages.error(request,"Invalid Credentials, Try Again!")
+            messages.error(request,"Invalid Credentials, Please Try Again!")
             return redirect('login')
 
     return render(request,'register/login.html')
 
 def signup(request):
-    return render(request,'register/registerUser.html')
+    return render(request,'register/signup.html')
 def dashboard(request):
     return render(request,'register/dashboard.html')
 

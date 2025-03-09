@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
 
 class Manager(BaseUserManager): # to manage the custom user
-    def create_user(self,username,f_name,l_name,email,contact,password=None):
+    def create_user(self,username,f_name,l_name,email,password=None):
         if not username:
             raise ValueError("User shall have a valid username!!")
         if not email:
@@ -13,7 +13,6 @@ class Manager(BaseUserManager): # to manage the custom user
             username=username,
             f_name=f_name,
             l_name=l_name,
-            contact=contact,
             email= self.normalize_email(email), # to handle case sensitivity in user input of email ID
         )
         user.set_password(password)
@@ -26,7 +25,6 @@ class Manager(BaseUserManager): # to manage the custom user
             f_name=f_name,
             l_name=l_name,
             password = password,
-            contact=contact,
             email = self.normalize_email(email),
         )
         # after creating normal user, we assign them addtitional properties(necessary for superuser)
@@ -63,7 +61,7 @@ class User(AbstractBaseUser): # custom user --> not the django default
     is_staff = models.BooleanField(default=False)
     is_superadmin = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'  #  primary identifier for the user
-    REQUIRED_FIELDS = ['username','f_name','l_name','contact'] # necessary fields for user to register
+    REQUIRED_FIELDS = ['username','f_name','l_name'] # necessary fields for user to register
     objects=Manager() 
     def __str__(self):
         return self.email
