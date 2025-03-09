@@ -1,0 +1,6 @@
+{% autoescape off %} <!--means we trust the HTML content that are coming! (safety against cross site scripting)-->
+Hello {{user.f_name}}!, <!-- by autosecape off, we ignore the {{...}} lines-->
+
+To activate your FeastExpress account,Please click on the given URL:
+http://{{domain}}{%url 'activate' uidb64=uid token=token%}<!--verification-->
+{% endautoescape %}

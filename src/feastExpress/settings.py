@@ -136,9 +136,17 @@ MEDIA_ROOT = BASE_DIR/'mediafiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# for diplaying multiple messages on webpages 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.SUCCESS:'info',
     messages.ERROR:'danger',
     messages.WARNING:'warning',
 }
+
+# Email config
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER=config('EMAIL_ID')
+EMAIL_HOST_PASSWORD= config('EMAIL_PASSWORD')
+EMAIL_USE_TLS= True
