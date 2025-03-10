@@ -5,6 +5,8 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import message,EmailMessage
+from django.conf import settings
+
 # utility functions to use accross app
 def detect(user):
     if user.type==1:  # for seller (type=1 in models.py)
@@ -17,16 +19,30 @@ def detect(user):
         redirect_url='/admin'
         return redirect_url
     
-def verify_email(request,user):
+def verify_email(request,user,mail_subject,mail_template):
+    email_sender= settings.DEFAULT_EMAIL_SENDER
     curr_site= get_current_site(request) #to fetch the current site based on the incoming request
-    mail_subject= 'FeastExpress Account Activation Mail'
     # render_to_string: utility fun to render HTML email template to string
-    message = render_to_string('email/acc_verify.html',{ 
+    message = render_to_string(mail_template,{ 
         'user':user,
         'domain':curr_site,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),# (encoded) string representing the user's primary key
         'token': default_token_generator.make_token(user), # otp type
     })
     to_email= user.email
-    mail = EmailMessage(mail_subject,message,to=[to_email]) #creates an instance of Django's EmailMessage class
+    mail = EmailMessage(mail_subject,message,email_sender,to=[to_email]) #creates an instance of Django's EmailMessage class
+    mail.send()
+
+def reset_link(request,user,mail_subject,mail_template):
+    email_sender= settings.DEFAULT_EMAIL_SENDER
+    curr_site= get_current_site(request) #to fetch the current site based on the incoming request
+    # render_to_string: utility fun to render HTML email template to string
+    message = render_to_string(mail_template,{ 
+        'user':user,
+        'domain':curr_site,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),# (encoded) string representing the user's primary key
+        'token': default_token_generator.make_token(user), # otp type
+    })
+    to_email= user.email
+    mail = EmailMessage(mail_subject,message,email_sender,to=[to_email]) #creates an instance of Django's EmailMessage class
     mail.send()

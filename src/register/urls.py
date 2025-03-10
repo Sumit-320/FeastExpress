@@ -10,4 +10,7 @@ urlpatterns = [
     path('vendorDashboard/',views.vendorDashboard,name='vendorDashboard'),
     path('redirectAccount/',views.redirectAccount,name='redirectAccount'),
     path('activate/<uidb64>/<token>/',views.activate,name='activate'),
+    path('forgotPassword/',views.forgotPassword,name='forgotPassword'),
+    path('resetAccountPassword/',views.resetAccountPassword,name='resetAccountPassword'),
+    path('resetValidate/<uidb64>/<token>/',views.resetValidate,name='resetValidate'),
 ]

@@ -3,9 +3,12 @@ from django.contrib import messages, auth
 from .forms import UserForm
 from vendor.forms import VendorForm
 from .models import User, Profile2
-from .utils import detect, verify_email
+from .utils import detect, verify_email, reset_link
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth.tokens import default_token_generator
+
 # Create your views here.
 def registerUser(request):
     if request.user.is_authenticated:
@@ -24,8 +27,10 @@ def registerUser(request):
             user.type = User.Buyer
             user.save() 
 
-            # email verification of customer
-            verify_email(request,user)
+            # email verification of customer using utility function
+            mail_subject='FeastExpress Account Activation Mail'
+            mail_template='email/acc_verify.html'
+            verify_email(request,user,mail_subject,mail_template)
             messages.success(request,"User Registered Successfully!")
             return redirect('signup')
         else:
@@ -59,8 +64,10 @@ def registerVendor(request):
             u_profile=Profile2.objects.get(user=user)
             vendor.profile=u_profile
             vendor.save()
-            # verify the vendor
-            verify_email(request,user)
+            # verify the vendor using utility function
+            mail_subject='FeastExpress Account Activation Mail'
+            mail_template='email/acc_verify.html'
+            verify_email(request,user,mail_subject,mail_template)
             messages.success(request,'Your Vendor Account is Registered, Wait for Approval')
             return redirect('registerVendor')
         else:
@@ -82,9 +89,10 @@ def login(request):
     if request.user.is_authenticated:
         messages.warning(request,"You are Logged In!")
         return redirect('redirectAccount')
-    if request.method=='POST':
-        email = request.POST['email']#name of input field of sign-in form
-        password= request.POST['password']
+    elif request.method=='POST':
+        email = request.POST.get('email')  # Avoid KeyError
+        password = request.POST.get('password')
+
         user = auth.authenticate(email=email,password=password)
         if user is not None: # -->user exists
             auth.login(request,user)
@@ -95,6 +103,11 @@ def login(request):
             return redirect('login')
 
     return render(request,'register/login.html')
+
+def logout(request):
+    auth.logout(request)
+    messages.info(request,"Logged Out Successfully!")
+    return redirect('login')
 
 def signup(request):
     return render(request,'register/signup.html')
@@ -111,6 +124,74 @@ def validateCustomer(user):
     else:
         raise PermissionDenied
     
+def activate(request,uidb64,token):
+    #user verification via otp-token
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode() # decode the encoded uid on verification email
+        user = User._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token): 
+        user.is_active = True   # if verified-> set user active, so that he can log in
+        user.save()
+        messages.success(request, 'Account activated sucessfully!')
+        return redirect('redirectAccount') # redirect to respective dashboard
+    else:
+        messages.error(request, 'Invalid link, Please try again!')
+        return redirect('redirectAccount')
+
+
+def forgotPassword(request):
+    if request.method=='POST':
+        email=request.POST.get('email')
+        if User.objects.filter(email=email).exists():
+            user = User.objects.get(email__exact=email) #exact case-sensitive match with the provided email
+
+            #send reset link using utility function
+            mail_subject='Reset your password'
+            mail_template='email/resetPassword.html'
+            reset_link(request,user,mail_subject,mail_template)
+            messages.success(request,'Password reset link sent successfully!')
+            return redirect('login')
+        else:
+            messages.error(request,'This Email address is not registered!')
+            return redirect('forgotPassword')
+    return render(request,'register/forgotPassword.html')
+
+def resetValidate(request,uidb64,token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):# verify the token
+        request.session['uid'] = uid # save uid(primary key) in session to use in resetting the password
+        messages.info(request, "Reset your account's password")
+        return redirect('resetAccountPassword')
+    else:
+        messages.error(request, 'This link is expired! Redirecting to you dashboard...')
+        return redirect('redirectAccount')
+    
+
+def resetAccountPassword(request):
+    if request.method=='POST':
+        password= request.POST.get('password')
+        confirm_password=request.POST.get('confirm_password')
+        if password==confirm_password: # refer line 170 --> we use the session id to reset password
+            pk = request.session.get('uid') # pk of user seeking password reset!
+            user = User.objects.get(pk=pk) # finding user data
+            user.set_password(password) # reset password
+            user.is_active=True 
+            user.save()
+
+            messages.success(request,'Password changed successfully!')
+            return redirect('login')
+        else:
+            messages.error(request,'Passwords do not match!')
+
+    return render(request,'register/resetAccountPassword.html')
 
 @login_required(login_url='login')# redirects user to /login if not logged in
 def redirectAccount(request):
@@ -128,12 +209,4 @@ def customerDashboard(request):
 def vendorDashboard(request):
     return render(request,'register/vendorDashboard.html')
 
-@login_required(login_url='login')
-def logout(request):
-    auth.logout(request)
-    messages.info(request,"Logged Out Successfully!")
-    return redirect('login')
 
-def activate(request,uidb64,token):
-    #user verification via otp-token
-    return
