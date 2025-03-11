@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from .forms import UserForm
 from vendor.forms import VendorForm
 from .models import User, Profile2
-from .utils import detect, verify_email, reset_link
+from .utils import detect, send_email, reset_link
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
 from django.utils.http import urlsafe_base64_decode
@@ -30,7 +30,7 @@ def registerUser(request):
             # email verification of customer using utility function
             mail_subject='FeastExpress Account Activation Mail'
             mail_template='email/acc_verify.html'
-            verify_email(request,user,mail_subject,mail_template)
+            send_email(request,user,mail_subject,mail_template)
             messages.success(request,"User Registered Successfully!")
             return redirect('signup')
         else:
@@ -67,7 +67,7 @@ def registerVendor(request):
             # verify the vendor using utility function
             mail_subject='FeastExpress Account Activation Mail'
             mail_template='email/acc_verify.html'
-            verify_email(request,user,mail_subject,mail_template)
+            send_email(request,user,mail_subject,mail_template)
             messages.success(request,'Your Vendor Account is Registered, Wait for Approval')
             return redirect('registerVendor')
         else:

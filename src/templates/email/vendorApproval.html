@@ -1,0 +1,9 @@
+{% autoescape off %} 
+Hello {{user.f_name}}, 
+{% if is_approved %}
+'Congrats, your restaurant is approved!'
+{% else %}
+'Sorry, your vendor application was rejected/terminated. For more details, feel free to contact us through your registered email address.'
+{% endif %}
+
+{% endautoescape %}

@@ -19,8 +19,8 @@ def detect(user):
         redirect_url='/admin'
         return redirect_url
     
-def verify_email(request,user,mail_subject,mail_template):
-    email_sender= settings.DEFAULT_EMAIL_SENDER
+def send_email(request,user,mail_subject,mail_template):
+    email_sender= settings.DEFAULT_FROM_EMAIL
     curr_site= get_current_site(request) #to fetch the current site based on the incoming request
     # render_to_string: utility fun to render HTML email template to string
     message = render_to_string(mail_template,{ 
@@ -34,7 +34,7 @@ def verify_email(request,user,mail_subject,mail_template):
     mail.send()
 
 def reset_link(request,user,mail_subject,mail_template):
-    email_sender= settings.DEFAULT_EMAIL_SENDER
+    email_sender= settings.DEFAULT_FROM_EMAIL
     curr_site= get_current_site(request) #to fetch the current site based on the incoming request
     # render_to_string: utility fun to render HTML email template to string
     message = render_to_string(mail_template,{ 
@@ -45,4 +45,11 @@ def reset_link(request,user,mail_subject,mail_template):
     })
     to_email= user.email
     mail = EmailMessage(mail_subject,message,email_sender,to=[to_email]) #creates an instance of Django's EmailMessage class
+    mail.send()
+
+def send_notification(mail_subject,mail_template,context):  # this util func is used at many places-- application approval/rejection etc.
+    email_sender = settings.DEFAULT_FROM_EMAIL
+    message = render_to_string(mail_template,context)
+    to_email = context['user'].email  # accessing dict keys (context)
+    mail = EmailMessage(mail_subject,message,email_sender,to=[to_email])
     mail.send()
