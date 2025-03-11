@@ -6,10 +6,10 @@
 }
 .show-notification{
     position: fixed;
-    top: 100%;
+    top: -200px;
     left: 50%;
     margin-left: -120px;
     animation-name: show-toast;
     animation-duration: 10s;
-
+    z-index: 9999;
 }

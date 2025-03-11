@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
-
+from vendor.models import Vendor
 # Create your views here.
 def registerUser(request):
     if request.user.is_authenticated:
@@ -207,6 +207,10 @@ def customerDashboard(request):
 @login_required(login_url='login')
 @user_passes_test(validateSeller)
 def vendorDashboard(request):
-    return render(request,'register/vendorDashboard.html')
+    vendor = Vendor.objects.get(user=request.user)# req.user-> logged in user!
+    context={
+        'vendor':vendor,
+    }
+    return render(request,'register/vendorDashboard.html',context) # dynamically update vendor info in html
 
 

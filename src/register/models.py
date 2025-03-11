@@ -97,4 +97,5 @@ class Profile2(models.Model):  # for customer
 
     def __str__(self):
         return self.user.email
- 
+    def full_address(self):
+        return f'{self.address_line1},{self.address_line2}'

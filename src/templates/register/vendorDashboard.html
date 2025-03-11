@@ -3,69 +3,69 @@
 {% block content %}
 <!-- Main Section Start -->
 <div class="main-section">
-    <div class="page-section restaurant-detail-image-section" style=" background: url({%static 'extra-images/vendor-dashboard.png'%}) no-repeat scroll 0 0 / cover;">
-        <!-- Container Start -->
-        <div class="container">
-            <!-- Row Start -->
-            <div class="row">
-                <!-- Column Start -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="company-info-detail">
-                        <div class="company-info">
-                            <div class="img-holder">
-                                <figure>
-                                    <img src="{%static 'extra-images/rst12.jpg' %}" alt="">
-                                </figure>
-                            </div>
-
-                            <div class="text-holder">
-                                <span class="restaurant-title">Chef's Palace</span>
-                                <div class="text">
-                                    <i class="icon-location"></i>
-                                    <p>Chandni Chowk <x></x>MG road, lane 27, Newd Delhi, India.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column End -->
-            </div>
-            <!-- Row End -->
-        </div>
-        <!-- Container End -->
-    </div>
-    <div class="page-section account-header buyer-logged-in">
+    {% include "parts/cover_image.html" %}
+    <div class="page-section account-header buyer-logged-in" style="margin-top:-50px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <div class="user-account-nav user-account-sidebar">
-                        <div class="user-nav-list">
-                            <ul>
-                                <li class="active"><a href="restaurant-dashboard.html"><i class="icon-dashboard3"></i>Dashboard</a></li>
-                                <li><a href="restaurant-restaurant.html"><i class="icon-building"></i>My Restaurant</a></li>
-                                <li><a href="restaurant-menu-builder.html"><i class="icon-menu5"></i>Menu Builder</a></li>
-                                <li><a href="restaurant-orders.html"><i class="icon-add_shopping_cart"></i>Orders</a></li>
-                                <li><a href="restaurant-earnings.html"><i class="icon-money"></i>Earnings</a></li>
-                                <li><a href="restaurant-statement.html"><i class="icon-file-text22"></i>Statement</a></li>
-                                <li><a href="restaurant-change-password.html"><i class="icon-unlock-alt"></i>Change Password</a></li>
-                                <li><a class="logout-btn" href="registration.html"><i class="icon-log-out"></i>Signout</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-left:-15px;">
+                    <!--Loading the sidebar-->
+                    {% include "parts/vendorSidebar.html" %}
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="user-dashboard loader-holder">
                         <div class="user-holder">
+                            <div class="container mt-4">
+                                <h5 class="text-uppercase font-weight-bold" style="color: black;">Overview</h5>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="card" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border: none;">
+                                            <div class="card-header text-white text-center" style="background-color:rgb(5, 58, 76); font-weight: bold;">
+                                                <i class="icon-shopping_cart"></i> Total Orders
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <a href="#" style="text-decoration: none; color: black;">
+                                                    <h4 style="font-weight: bold;">787</h4>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="card" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border: none;">
+                                            <div class="card-header text-white text-center" style="background-color:rgb(98, 7, 7); font-weight: bold;">
+                                                <i class="icon-money"></i> Total Revenue
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <a href="#" style="text-decoration: none; color: black;">
+                                                    <h4 style="font-weight: bold;">$1.25 Million</h4>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-12">
+                                        <div class="card" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border: none;">
+                                            <div class="card-header text-white text-center" style="background-color:rgb(139, 86, 13); font-weight: bold;">
+                                                <i class="icon-file-text22"></i> This Month
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <a href="#" style="text-decoration: none; color: black;">
+                                                    <h4 style="font-weight: bold;">$23K</h4>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <br>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                                 <div class="row">
                                     <div class="element-title has-border right-filters-row">
                                         <h5>Recent Orders</h5>
                                         <div class="right-filters row pull-right">
                                             <div class="col-lg-6 col-md-6 col-xs-6">
-                                                <div class="input-field">
+                                                <div class="input-field" style="width:180px;">
                                                     <select class="chosen-select-no-single">
-                                                        <option selected="selected" value="">Select Orders Status</option>
+                                                        <option selected="selected" value="">Select Order Status</option>
                                                         <option value="Processing">Processing</option>
                                                         <option value="Cancelled">Cancelled</option>
                                                         <option value="Completed">Completed</option>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="user-orders-list">
+                                    <div class="user-orders-list" style="margin-bottom:-35px;">
                                         <div class="responsive-table">
                                             <ul class="table-generic">
                                                 <li class="order-heading-titles">
