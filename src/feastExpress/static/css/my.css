@@ -5,11 +5,27 @@
     100% {top: -100%}
 }
 .show-notification{
-    position: fixed;
+    position: absolute;
     top: -200px;
     left: 50%;
     margin-left: -120px;
     animation-name: show-toast;
     animation-duration: 10s;
     z-index: 9999;
+}
+
+.btn.btn-info {
+    cursor: pointer;
+    width: 270px;
+    padding: 5px;
+    color: #fff;
+    background-color: #691e22;
+    border-color: #000;
+}
+
+.btn-info:hover {
+    cursor: pointer;
+    color: #000000;
+    background-color: #c7b213;
+    border-color: #c7b213;
 }
