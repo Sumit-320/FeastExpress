@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% include "parts/cover_image.html" %}
+<!-- Main Section Start -->
+<div class="main-section">
+    <div class="page-section account-header buyer-logged-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-left:-15px;">
+                    <!--Loading the sidebar-->
+                    {% include "parts/vendorSidebar.html" %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                            <h4 class="text-uppercase">Build your Menu Card</h4>
+                            <hr>
+                            <h5>Food Items</h5>
+                            <a href="{% url 'addCategory' %}" class="btn btn-info float-right m-1" style="background-color:rgb(13, 26, 74); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Category</a>
+                            <a href="#" class="btn btn-success float-right m-1" style="background-color:rgb(103, 10, 10); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Item</a>
+                            
+                            <table class="table table-hover table ">
+                                <tbody>
+
+                                  {% for cat in categories %}  <!--categories from context passed in menuBuilder view-->
+                                  <tr>
+                                    <td style="width: 10%;">{{forloop.counter}}</td>
+                                    <td style="width: 60%;">
+                                      <a href="{% url 'foodByCategories' cat.id%}"><h5>{{cat}}</h5></a>
+                                    </td>
+                                    <td style="width: 30%;"><a href="{% url 'editCategory' cat.id %}" style="color:unset"><i class ="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit</a>&nbsp;&nbsp;&nbsp;<a href="{% url 'deleteCategory' cat.id%}" onclick = "return confirm('Are you sure you want to delete this category?')" style="color:unset;"><i class ="fa fa-trash text-danger" aria-hidden="true"></i>&nbsp;Delete</a></td>
+                                    
+                                  </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+{% include "parts/alerts.html" %}
+{% endblock content %}

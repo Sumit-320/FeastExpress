@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% include "parts/cover_image.html" %}
+<!-- Main Section Start -->
+<div class="main-section">
+    <div class="page-section account-header buyer-logged-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-left:-15px;">
+                    <!--Loading the sidebar-->
+                    {% include "parts/vendorSidebar.html" %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                            <h4 class="text-uppercase">Build your Menu Card</h4>
+                            <hr>
+                            <button style="background-color:rgb(103, 10, 10); color: white;cursor:pointer; margin-bottom:8px;" class="btn btn-secondary" onclick="history.back()"><i class="fa fa-angle-left"></i> Go Back</button>
+                            <h5>Category : <span style="color:rgb(185, 21, 21);">{{category}}</span></h5>
+                            
+                            
+                            <table class="table table-hover table ">
+                                <tbody>
+                                {% if fooditems %}
+                                <a href="{% url 'addCategory' %}" class="btn btn-info float-right m-1" style="background-color:rgb(13, 26, 74); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Category</a>
+                                <a href="#" class="btn btn-success float-right m-1" style="background-color:rgb(103, 10, 10); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Item</a>
+                                    {% for food in fooditems %}  <!--categories from context passed in menuBuilder view-->
+                                    <tr>
+                                        <td style="width: 10%;">{{forloop.counter}}</td>
+                                        <td class="text-left" width="0.01"><img src="{{food.image.url}}" alt="Food Image"></td>
+                                        <td style="width: 35%;">
+                                        <a href=""><h5>{{food}}</h5></a>
+                                        </td>
+                                        <td style="width: 25%;"><i class ="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit&nbsp;&nbsp;&nbsp;<i class ="fa fa-trash text-danger" aria-hidden="true"></i>&nbsp;Delete</td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <h5>No Food items found.</h5>
+                                    <div class="text-center">
+                                        <a href="#" class="btn btn-success m-1" style="background-color:rgb(103, 10, 10); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Item</a>
+                                    </div>
+                                {% endif %}
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+{% include "parts/alerts.html" %}
+{% endblock content %}

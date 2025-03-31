@@ -93,7 +93,9 @@ class Profile2(models.Model):  # for customer
     longitude = models.CharField(max_length=20,blank=True,null =True)
     create_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
-
+    class Meta:
+        verbose_name = 'profile2'
+        verbose_name_plural = 'profiles'
     def __str__(self):
         return self.user.email
    

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% include "parts/cover_image.html" %}
+<!-- Main Section Start -->
+<div class="main-section">
+    <div class="page-section account-header buyer-logged-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-left:-15px;">
+                    <!--Loading the sidebar-->
+                    {% include "parts/vendorSidebar.html" %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                            <h4 class="text-uppercase">Build your Menu Card</h4>
+                            <hr>
+                            <button style="font-size:14px;background-color:rgb(103, 10, 10); color: white;cursor:pointer; margin-bottom:8px;" class="btn btn-secondary" onclick="history.back()"><i class="fa fa-angle-left"></i> Go Back</button>
+                            <br>
+                            <h4>Add New Category</h4>
+                            
+                          <!--form-->
+                            <form action="{% url 'addCategory' %}" method="POST">
+                                <!--{{form}} : from the context passed from the view addCategory-->
+                                {% csrf_token %}
+                                <div class="form-fields-set">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="field-holder">
+                                                <label>Category Name *</label>
+                                                {{form.category_name}} <!--the attribute mentioned in fields of form-->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="field-holder">
+                                                <label>Description</label>
+                                                {{form.description}} <!--the attribute mentioned in fields of form-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                   {% for field in form %}
+                                        {% if field.errors %}
+                                            {% for errors in field.errors %}
+                                                <li style="color:red;">{{error}}</li>
+                                            {% endfor %}
+                                        {% endif %}
+                                   {% endfor %}
+                                </div>
+                               <button type="submit" style="font-size:15px;padding-right:16px;padding-bottom:5px;padding-top:4px;background-color:rgb(103, 10, 10); color: white;cursor:pointer;"><i class="fa fa-check" style="margin-left:12px;" aria-hidden="true"></i> Create</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+{% include "parts/alerts.html" %}
+{% endblock content %}
