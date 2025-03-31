@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'register.context_processors.getVendor',
+                'register.context_processors.get_google_api',
             ],
         },
     },
@@ -152,3 +153,6 @@ EMAIL_HOST_USER=config('EMAIL_ID')
 EMAIL_HOST_PASSWORD= config('EMAIL_PASSWORD')
 EMAIL_USE_TLS= True
 DEFAULT_FROM_EMAIL = 'FeastExpress <feastexpress5@gmail.com>'
+
+# google API
+GOOGLE_API_KEY = config('GOOGLE_API_KEY')

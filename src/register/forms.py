@@ -17,16 +17,17 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError("Your passwords do not match!")
 
 class UserProfileForm(forms.ModelForm):
+    address=forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your address','required':'required'}))
     profile_pic = forms.FileField(widget=forms.FileInput(attrs={'class':'btn btn-info'}),validators=[allow_only_images_validator])
     bg_pic = forms.FileField(widget=forms.FileInput(attrs={'class':'btn btn-info'}),validators=[allow_only_images_validator])
     #latitude = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
     #longitude = forms.CharField(widget=forms.TextInput(attrs={'readonly':'readonly'}))
     class Meta:
         model=Profile2
-        fields=['profile_pic','bg_pic','address_line1','address_line2','country','state','city','pin','latitude','longitude']
+        fields=['profile_pic','bg_pic','address','country','state','city','pin','latitude','longitude']
 
-    def __init__(self,*args,**kwargs):
+    def __init__(self,*args,**kwargs): 
         super(UserProfileForm,self).__init__(*args, **kwargs)
-        for field in self.fields:
+        for field in self.fields: 
             if field=='latitude' or field=='longitude':
                 self.fields[field].widget.attrs['readonly']='readonly'
