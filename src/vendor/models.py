@@ -5,7 +5,7 @@ from register.utils import send_notification
 class Vendor(models.Model):
     user = models.OneToOneField(User,related_name='user',on_delete=models.CASCADE) #one to one field
     profile= models.OneToOneField(Profile2,related_name='userprofile',on_delete=models.CASCADE)
-    name= models.CharField(max_length=40)
+    name= models.CharField(max_length=150)
     license = models.ImageField(upload_to='vendor/license')  # media root already configured
     is_approved = models.BooleanField(default=False)# to sell at website
     created_at = models.DateTimeField(auto_now=True)

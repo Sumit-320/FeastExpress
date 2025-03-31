@@ -2003,7 +2003,7 @@ color:#c33332 !important;
 }
 .bgcolor, .chosen-container .chosen-results li.highlighted, .order-sort-results ul li:hover:before, .bootstrap-datetimepicker-widget .btn-primary, 
 .booking-info-sec .contact-info .field-holder .submit-btn input[type="submit"], .user-order input[type="submit"], .main-post .column-text form .field-holder .field-btn, 
-.main-search.fancy.bg-holder, .load-more-btn:hover, .order-sort-results ul li.active:before, .order-sort-results ul li.active:before, .listing.simple.slide-loader:before, .main-header .login-option a.get-start-btn, .field-holder .btn-submit:hover, .no-results .suggestions ul li:before, .widget.widget_search form .btn-default, .textwidget span.button-med a, .cs-seprater:after, .slicknav_btn, .user-order .select-option input[type="radio"]:checked + label:after, #add_payment_method #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce-checkout #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce form .woocommerce-checkout-payment .form-row input.button, .pricetable-holder .cs-price, .foodbakery-button-loader, .invite-member .btn-send, .menu-order-detail .btn-print, .radio-holder .input-radio label:after, .footer-style-1 .social-media li a:hover, #footer.footer-style-1 .widget-title h5:after, .pricetable-holder .foodbakery-subscribe-pkg-btn, .pricetable-holder .foodbakery-subscribe-pkg, .login-form .input-filed input[type="submit"], .login-form .input-filed input[type="button"], .user-dashboard .foodbakery_loader, .user-order input[type="submit"], .user-order .menu-order-confirm, .modal-dialog .menu-selection-container button, .modal-dialog .menu-selection-container .reset-menu-fields, .suggestion-search .btn-default, .main-search.classic .field-holder input[type="submit"],
+.main-search.fancy.bg-holder, .load-more-btn:hover, .order-sort-results ul li.active:before, .order-sort-results ul li.active:before, .listing.simple.slide-loader:before, .main-header .login-option a.get-start-btn, .field-holder .btn-submit:hover, .no-results .suggestions ul li:before, .widget.widget_search form .btn-default, .textwidget span.button-med a, .cs-seprater:after, .slicknav_btn, .user-order .select-option input[type="radio"]:checked + label:after, #add_payment_method #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce-checkout #payment ul.payment_methods li.wc_payment_method input[type="radio"]:checked + label:after, .woocommerce form .woocommerce-checkout-payment .form-row input.button, .pricetable-holder .cs-price, .foodbakery-button-loader, .invite-member .btn-send, .menu-order-detail .btn-print, .radio-holder .input-radio label:after, .footer-style-1 .social-media li a:hover, #footer.footer-style-1 .widget-title h2:after, .pricetable-holder .foodbakery-subscribe-pkg-btn, .pricetable-holder .foodbakery-subscribe-pkg, .login-form .input-filed input[type="submit"], .login-form .input-filed input[type="button"], .user-dashboard .foodbakery_loader, .user-order input[type="submit"], .user-order .menu-order-confirm, .modal-dialog .menu-selection-container button, .modal-dialog .menu-selection-container .reset-menu-fields, .suggestion-search .btn-default, .main-search.classic .field-holder input[type="submit"],
 .wp-foodbakery .listing.grid-slider .list-post:hover:before, #footer.footer-style-4 .social-media > li > a:hover, #header.transparent-header.court.pinned .main-header,
 .main-location > ul > li.choose-location ul ul::-webkit-scrollbar-thumb, .icon-boxes.fancy:hover .img-holder figure i
 {
@@ -2059,9 +2059,9 @@ font:700 Normal  18px/26px "Montserrat", sans-serif !important;letter-spacing: 1
 font:700 Normal  20px/26px "Montserrat", sans-serif !important;letter-spacing: 1px !important;text-transform: uppercase !important;color: #000000 !important;	    }
 .cs-page-title h1 {
 font:700 Normal  30px/36px "Montserrat", sans-serif !important;letter-spacing: 1px !important;text-transform: capitalize !important;color: #000000 !important;	    }
-.page-sidebar .widget .widget-title h5{
+.page-sidebar .widget .widget-title h2{
 font:700 Normal  16px/20px "Montserrat", sans-serif !important;letter-spacing: 1px !important;text-transform: capitalize !important;color: #000000 !important;	    }
-#footer .widget-title h5{
+#footer .widget-title h2{
 font:700 Normal  16px/20px "Montserrat", sans-serif !important;letter-spacing: 1px !important;text-transform: capitalize !important;color: #adb0b6 !important;	    }
 #header .main-header
 {
@@ -2095,9 +2095,9 @@ color:#999999 !important;}
 #header .main-navigation ul ul,
 #header .main-navigation ul ul ul li:hover > a
 { background:#ffffff !important; }
-.page-sidebar .widget-title h3, .page-sidebar .widget-title h4, .page-sidebar .widget-title h5, .page-sidebar .widget-title h6{
+.page-sidebar .widget-title h2, .page-sidebar .widget-title h4, .page-sidebar .widget-title h5, .page-sidebar .widget-title h6{
 color:#2d2d2d !important;
-}	    .section-sidebar .widget-title h3, .section-sidebar .widget-title h4, .section-sidebar .widget-title h5, .section-sidebar .widget-title h6{
+}	    .section-sidebar .widget-title h2, .section-sidebar .widget-title h4, .section-sidebar .widget-title h5, .section-sidebar .widget-title h6{
 color:#2d2d2d !important;
 }
 #footer .footer-widget { background-color:#282C35 !important; }
@@ -2136,10 +2136,10 @@ color:#cdcdcd !important;
 .widget:after{content: ""; clear: both; display: block;}
 .widget-holder{background-color: #fff; padding: 20px 30px 0px 30px; overflow: hidden; margin-bottom: 30px;}
 .page-sidebar:after, .section-sidebar:after{content: ""; display: block; clear: both;}
-.widget-title{padding-bottom: 10px; margin-bottom: 25px; position: relative;}
-.widget-title h4, .widget-title h5, .widget-title h6 {margin-bottom: 0px; font-weight: 700;}
-.page-sidebar .widget, .section-sidebar .widget{margin-bottom: 30px;}
-.page-sidebar .widget-title, .section-sidebar .widget-title{position: relative; padding-bottom: 8px; margin-bottom: 25px;}
+.widget-title{padding-bottom: 8px; margin-bottom: 8px; position: relative;}
+.widget-title h2, .widget-title h5, .widget-title h6 {margin-bottom: 0px; font-weight: 700;}
+.page-sidebar .widget, .section-sidebar .widget{margin-bottom: 10px;}
+.page-sidebar .widget-title, .section-sidebar .widget-title{position: relative; padding-bottom: 8px; margin-bottom: 8px;}
 .page-sidebar .widget-title:before, .section-sidebar .widget-title:before{ content: ""; position: absolute; left: 0px; bottom: 0px; border-bottom: 2px solid #2f313a; width: 38px; height: 2px; background-color:#2f313a;}
 /* Widget Title */
 .widget ul{padding: 0px; margin: 0px;}
@@ -2195,7 +2195,7 @@ color:#cdcdcd !important;
 /* Widget Cloud */
 /* Widget News Letter */
 .widget-newsletter .fieldset{display: block;}
-.widget-newsletter p{color: #2f313a;}
+.widget-newsletter p{color: #6ca17c;}
 .widget-newsletter form .field-holder{margin-bottom: 12px;}
 .widget-newsletter form .field-holder input.field-input{height: 41px; line-height: 41px; background-color: #f9fafc; border:1px solid #f2f2f2; color: #a5a7af; font-size: 12px; padding-left: 44px;}
 .widget-newsletter form .field-holder label{display: block; margin-bottom: 0px; position: relative;}
@@ -2863,7 +2863,7 @@ ul.sub-nav { text-align: left; }
 @media screen and (max-width: 400px) {
 .footer-widget .widget-newsletter .fieldset form .field-holder { width: 100%; }
 .footer-widget .widget-newsletter .fieldset form .field-holder.btn-holder { width: 100%; margin-left: 0; }
-#footer .footer-widget .widget-newsletter .widget-title h5 { font-size: 15px !important; }
+#footer .footer-widget .widget-newsletter .widget-title h2 { font-size: 15px !important; }
 .widget-gallery li { width: 50%; }
 .post-title h3 a { font-size: 16px !important; }
 .image-frame.fancy .text-holder h2 { font-size: 18px !important; }
