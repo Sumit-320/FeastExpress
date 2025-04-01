@@ -18,18 +18,30 @@
                             <hr>
                             <button style="font-size:14px;background-color:rgb(103, 10, 10); color: white;cursor:pointer; margin-bottom:8px;" class="btn btn-secondary" onclick="history.back()"><i class="fa fa-angle-left"></i> Go Back</button>
                             <br>
-                            <h4>Edit Category</h4>
+                            <h4>Edit Food Item</h4>
                             
                           <!--form-->
-                            <form action="{% url 'editCategory' category.id%}" method="POST">
+                            <form action="{% url 'editFood' food.id%}" method="POST" enctype='multipart/form-data'>
                                 <!--{{form}} : from the context passed from the view addCategory-->
                                 {% csrf_token %}
                                 <div class="form-fields-set">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="field-holder">
-                                                <label>Category Name *</label>
-                                                {{form.category_name}} <!--the attribute mentioned in fields of form-->
+                                                <label>Food Item Name *</label>
+                                                {{form.food_title}} <!--the attribute mentioned in fields of form-->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
+                                            <div class="field-holder">
+                                                <label>Food Category *</label>
+                                                {{form.category}} <!--the attribute mentioned in fields of form-->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="field-holder">
+                                                <label>Is Food Item Available ?</label>
+                                                {{form.is_available}} <!--the attribute mentioned in fields of form-->
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -38,6 +50,22 @@
                                                 {{form.description}} <!--the attribute mentioned in fields of form-->
                                             </div>
                                         </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="field-holder">
+                                                <label>Price *</label>
+                                                {{form.price}} <!--the attribute mentioned in fields of form-->
+                                            
+                                            </div>
+                                        </div>
+                                        
+
+                                        <div class="col-lg-4 col-md-4 col-sm-12">
+                                            <div class="field-holder">
+                                                <label>Food Image</label>
+                                                {{form.image}} <!--the attribute mentioned in fields of form-->
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                    {% for field in form %}
                                         {% if field.errors %}

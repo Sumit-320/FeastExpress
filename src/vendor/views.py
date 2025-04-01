@@ -7,7 +7,7 @@ from menu.models import Category, FoodItem
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required,user_passes_test
 from register.views import validateSeller
-from menu.forms import CategoryForm
+from menu.forms import CategoryForm,FoodItemForm
 from django.template.defaultfilters import slugify
 # Create your views here.
 @login_required(login_url='login')
@@ -62,6 +62,8 @@ def foodByCategories(request,pk=None):
     }
     return render(request,'vendor/food_items_by_category.html',context)
 
+@login_required(login_url='login')
+@user_passes_test(validateSeller)
 def addCategory(request):
     if request.method=='POST':
        form = CategoryForm(request.POST)
@@ -73,6 +75,8 @@ def addCategory(request):
             form.save()  # in the database
             messages.success(request,'Category Added Successfully!')
             return redirect('menuBuilder')
+       else:
+           print(form.errors)
     else: 
         form = CategoryForm()
 
@@ -82,6 +86,8 @@ def addCategory(request):
 
     return render(request,'vendor/add_category.html',context) #now this category form is available to html
 
+@login_required(login_url='login')
+@user_passes_test(validateSeller)
 def editCategory(request,pk=None):
     category = get_object_or_404(Category,pk=pk) # users' pk
 
@@ -95,6 +101,8 @@ def editCategory(request,pk=None):
             form.save()  # in the database
             messages.success(request,'Category Updated Successfully!')
             return redirect('menuBuilder')
+       else:
+           print(form.errors)
     else: 
         form = CategoryForm(instance=category) # instance containes data of existing category in the form
 
@@ -105,8 +113,68 @@ def editCategory(request,pk=None):
 
     return render(request,'vendor/edit_category.html',context)
 
+@login_required(login_url='login')
+@user_passes_test(validateSeller)
 def deleteCategory(request,pk=None):
     category = get_object_or_404(Category,pk=pk) # users' instance via pk
     category.delete()
     messages.success(request,'Category Deleted Successfully!')
     return redirect('menuBuilder')
+
+@login_required(login_url='login')
+@user_passes_test(validateSeller)
+def addFood(request):
+    if request.method=='POST':
+       form = FoodItemForm(request.POST,request.FILES) # for img file
+       if form.is_valid():
+            food_title = form.cleaned_data['food_title'] # sent via user via request POST
+            food = form.save(commit=False)
+            food.vendor = Vendor.objects.get(user=request.user)
+            food.sulg = slugify(food_title)
+            form.save()  # in the database
+            messages.success(request,'Food Item Added Successfully!')
+            return redirect('foodByCategories',food.category.id)  # pk passed too!
+       else:
+           print(form.errors)
+    else: 
+        form = FoodItemForm()
+
+    context={
+        'form':form,
+    }
+    return render(request,'vendor/add_food.html',context)
+
+@login_required(login_url='login')
+@user_passes_test(validateSeller)
+def editFood(request,pk=None):
+    food = get_object_or_404(FoodItem,pk=pk) # users' pk
+
+    if request.method=='POST':
+       form = FoodItemForm(request.POST,request.FILES,instance=food)
+       if form.is_valid():
+            food_title = form.cleaned_data['food_title'] # sent via user via request POST
+            food = form.save(commit=False)  # food-object
+            food.vendor = Vendor.objects.get(user=request.user)
+            food.sulg = slugify(food_title)
+            form.save()  # in the database
+            messages.success(request,'Food Item Updated Successfully!')
+            return redirect('foodByCategories',food.category.id)
+       else:
+           print(form.errors)
+    else: 
+        form = FoodItemForm(instance=food) # instance containes data of existing category in the form
+
+    context={
+        'food':food,
+        'form':form,
+    }
+
+    return render(request,'vendor/edit_food.html',context)
+
+@login_required(login_url='login')
+@user_passes_test(validateSeller)
+def deleteFood(request,pk=None):
+    food = get_object_or_404(FoodItem,pk=pk) # users' instance via pk
+    food.delete()
+    messages.success(request,'Food Item is Deleted Successfully!')
+    return redirect('foodByCategories',food.category.id)

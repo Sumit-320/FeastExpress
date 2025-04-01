@@ -17,8 +17,11 @@
                             <h4 class="text-uppercase">Build your Menu Card</h4>
                             <hr>
                             <h5>Food Items</h5>
+                            {% if categories %}
+                            
+                            
                             <a href="{% url 'addCategory' %}" class="btn btn-info float-right m-1" style="background-color:rgb(13, 26, 74); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Category</a>
-                            <a href="#" class="btn btn-success float-right m-1" style="background-color:rgb(103, 10, 10); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Item</a>
+                            <a href="{% url 'addFood' %}" class="btn btn-success float-right m-1" style="background-color:rgb(103, 10, 10); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Item</a>
                             
                             <table class="table table-hover table ">
                                 <tbody>
@@ -35,7 +38,9 @@
                                   {% endfor %}
                                 </tbody>
                               </table>
-                            
+                              {% else %}
+                              <h5 class="text">No Categories Found, click on "Add Category" button to add your first category!</h5>
+                              {% endif %}
                         </div>
                     </div>
                 </div>
