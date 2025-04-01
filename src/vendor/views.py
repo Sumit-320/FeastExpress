@@ -138,6 +138,8 @@ def addFood(request):
            print(form.errors)
     else: 
         form = FoodItemForm()
+        # to filter the different values for different vendors in menu-builder and food categories
+        form.fields['category'].queryset = Category.objects.filter(vendor = Vendor.objects.get(user=request.user))
 
     context={
         'form':form,
@@ -163,7 +165,8 @@ def editFood(request,pk=None):
            print(form.errors)
     else: 
         form = FoodItemForm(instance=food) # instance containes data of existing category in the form
-
+        # to filter the different values for different vendors in menu-builder and food categories
+        form.fields['category'].queryset = Category.objects.filter(vendor = Vendor.objects.get(user=request.user))
     context={
         'food':food,
         'form':form,

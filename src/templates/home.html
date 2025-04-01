@@ -10,7 +10,7 @@
 			<div class="row">
 				<div class="col-lg-9 col-md-8 col-sm-8 col-xs-8 ">
 					<div class="element-title">
-						<h2 style="font-size: 20px; color: #505050; text-transform: uppercase; line-height: 20px; margin-bottom: 25px; text-align:center;">
+						<h2 style="color:black !important; background-color:  rgba(255, 255, 255, 0.5); padding-left:20px;padding-top:10px;padding-bottom:10px;padding-right:-20px; border-radius: 5px;margin-left:70px;margin-right:60px;">
 							Delicious meals, delivered to your doorstep!</h2>
 					</div>
 				</div>
@@ -92,13 +92,16 @@
 	<!-- Main Search End -->
 	
 	<!-- Top Restarurants Section Start -->
-	<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 0px;margin-bottom: 0px;background: #ffffff;">
+	<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 0px;background: url({% static 'extra-images/banner-img3.jpg' %}) repeat center left;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-					<div class="element-title align-left" style="padding-right:300px">
-						<h2><strong>Some of our Top Restaurants</strong><h2>
+					<div class="element-title align-center" style="position: relative; z-index: 1;">
+						<h2 style="color:black !important; background-color: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 5px;">
+							Some of our Most Famous Restaurants
+						</h2>
 					</div>
+					
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style = "padding-right:0 !important; padding-left: 0 !important">
 					<div class="company-logo">
@@ -140,7 +143,7 @@
 							</li>
 							<li class="has-border">
 								<figure>
-									<a href="#"><img src="{% static "extra-images/rst7.png"%}" class="attachment-full size-full wp-post-image" alt=""></a>
+									<a href="#"><img src="{% static "extra-images/rst4.png"%}" class="attachment-full size-full wp-post-image" alt=""></a>
 								</figure>
 							</li>
 							<li class="has-border">
@@ -173,7 +176,16 @@
 									<a href="#"><img src="{% static "extra-images/rst14.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
 								</figure>
 							</li>
-
+							<li class="has-border">
+								<figure>
+									<a href="#"><img src="{% static "extra-images/rst9.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
+								</figure>
+							</li>
+							<li class="has-border">
+								<figure>
+									<a href="#"><img src="{% static "extra-images/rst13.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
+								</figure>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -184,13 +196,16 @@
 
 
 	<!-- Choose From Most Popular Listin Start -->
-	<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 50px;margin-bottom: 0px;background: #ffffff;">
+	<div class="page-section nopadding cs-nomargin" style="background: url({% static 'extra-images/banner-img3.jpg' %});  background-size: auto;margin-top: 0px;padding-top: 0px;padding-bottom: 50px;margin-bottom: 0px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="element-title align-center">
-						<h2>Choose From our Most Popular Restaurants</h2>
+					<div class="element-title align-center" style="position: relative; z-index: 1;">
+						{% comment %} <h2 style="color:black !important; background-color: rgba(255, 255, 255, 0.7); padding: 10px; border-radius: 5px;">
+							Choose From our Most Popular Restaurants
+						</h2> {% endcomment %}
 					</div>
+					
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="listing fancy">
@@ -328,7 +343,31 @@
 										</div>
 										<address> <span>Type of food : </span> Indonesian Food</address>
 									</div>
-									
+								</div>
+							</li>
+							<li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="list-post featured">
+									<div class="img-holder">
+										<figure><a href="#"><img src="{% static "extra-images/rst14.jpg" %}" class="img-thumb wp-post-image" alt=""></a></figure>
+										<span class="restaurant-status open">
+											<em class="bookmarkRibbon"></em>Open
+										</span>
+									</div>
+									<div class="text-holder">
+										<div class="list-rating">
+											<div class="rating-star">
+												<span class="rating-box" style="width: 100%;"></span>
+											</div>
+											<span class="reviews">(943)</span>
+										</div>
+										<div class="post-title">
+											<h5>
+												<a href="listing-detail.html">RichiRich Restarurant</a>
+												<span class="sponsored text-color">Sponsored</span>
+											</h5>
+										</div>
+										<address> <span>Type of food : </span> Indonesian Food</address>
+									</div>
 								</div>
 							</li>
 

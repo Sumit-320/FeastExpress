@@ -40,6 +40,9 @@
                               </table>
                               {% else %}
                               <h5 class="text">No Categories Found, click on "Add Category" button to add your first category!</h5>
+                              <div class="text-centre">
+                              <a href="{% url 'addCategory' %}" class="btn btn-info float-right m-1" style="background-color:rgb(13, 26, 74); color: white;cursor:pointer;"><i class ="fa fa-plus" aria-hidden="true"></i> Add New Category</a>
+                              </div>
                               {% endif %}
                         </div>
                     </div>
