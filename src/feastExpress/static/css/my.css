@@ -40,3 +40,27 @@
 .footer-link:hover {
     color:#c46e23; 
 }
+
+.btnx-2{
+    background-color:rgb(129, 122, 122);
+    border: none;
+    color: white; 
+    padding: 12px 30px; 
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width:85%;
+}
+
+.btnx-2:hover{
+    background-color:rgb(255, 128, 0);
+    border: none;
+    color: rgb(0, 0, 0); 
+    padding: 12px 30px; 
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width:85%;
+}

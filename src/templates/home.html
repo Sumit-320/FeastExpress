@@ -78,7 +78,7 @@
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12" >
 									<div class="field-holder" >
-										<input type="submit" style="border-radius: 5px; font-size: 20px; padding-left:10px;padding-right:-12px;background-color:rgb(233, 202, 26);" value="enter">
+										<input type="submit" style="border-radius: 5px; font-size: 20px; padding-left:10px;padding-right:-12px;font-weight:590 !important;color:black;background-color:rgb(233, 202, 26);" value="enter">
 									</div>
 								</div>
 							</div>
@@ -106,6 +106,17 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style = "padding-right:0 !important; padding-left: 0 !important">
 					<div class="company-logo">
 						<ul>
+							{% for v in vendors %}
+							<li class="has-border">
+								<figure>
+									{% if v.profile.profile_pic %}
+										<a href="#"><img src="{{ v.profile.profile_pic.url }}" class="attachment-full size-full wp-post-image" alt=""></a>
+									{% else %}
+										<a href="#"><img src="{% static 'images/default-logo.jpg' %}" class="attachment-full size-full wp-post-image" alt=""></a>
+									{% endif %}
+								</figure>
+							</li>
+							{% endfor %}
 							<li class="has-border">
 								<figure>
 									<a href="#"><img src="{% static "extra-images/rst1.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
@@ -166,26 +177,7 @@
 									<a href="#"><img src="{% static "extra-images/rst12.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
 								</figure>
 							</li>
-							<li class="has-border">
-								<figure>
-									<a href="#"><img src="{% static "extra-images/rst13.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
-								</figure>
-							</li>
-							<li class="has-border">
-								<figure>
-									<a href="#"><img src="{% static "extra-images/rst14.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
-								</figure>
-							</li>
-							<li class="has-border">
-								<figure>
-									<a href="#"><img src="{% static "extra-images/rst9.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
-								</figure>
-							</li>
-							<li class="has-border">
-								<figure>
-									<a href="#"><img src="{% static "extra-images/rst13.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
-								</figure>
-							</li>
+							
 						</ul>
 					</div>
 				</div>
@@ -210,34 +202,45 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="listing fancy">
 						<ul class="row">
+
+							{% for v in vendors %}
 							<li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="list-post featured">
 									<div class="img-holder">
-										<figure><a href="#"><img src="{% static "extra-images/rst9.jpg" %}" class="img-thumb wp-post-image" alt=""></a></figure>
+										<figure>
+											{% if v.profile.profile_pic %}
+												<a href="#"><img src="{{ v.profile.profile_pic.url }}" class="img-thumb wp-post-image" alt=""></a>
+											{% else %}
+												<a href="#"><img src="{% static "extra-images/rst13.jpg" %}" class="img-thumb wp-post-image" alt=""></a>
+											{% endif %}
+										</figure>
 										<span class="restaurant-status close">
 											<em class="bookmarkRibbon"></em>Close
 										</span>
 									</div>
 									<div class="text-holder">
-										<div class="list-rating">
+										{% comment %} <div class="list-rating">
 											<div class="rating-star">
 												<span class="rating-box" style="width: 100%;"></span>
 											</div>
 											<span class="reviews">(1781)</span>
-										</div>
+										</div> {% endcomment %}
 										<div class="post-title">
 											<h5>
-												<a href="listing-detail.html">Fast Food Hub</a>
-												<span class="sponsored text-color">Sponsored</span>
+												<a href="listing-detail.html">{{v.name}}</a>
 											</h5>
 										</div>
-										<address> <span>Type of food : </span> Indian Snacks and Cuisine</address>
+										{% if  v.profile.city and v.profile.state and v.profile.pin%}
+										<span>{{v.profile.city}}, {{v.profile.state }}, {{v.profile.pin}}</span>
+										{% else %}
+										<address> <span>Type of food : </span> Mexican Cuisine, Indian Cuisine</address>
+										{% endif %}
 									</div>
 									
 								</div>
 							</li>
 							
-							
+							{% endfor %}
 							
 							
 							<li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
