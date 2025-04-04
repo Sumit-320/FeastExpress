@@ -15,7 +15,11 @@
                             <div class="listing-sorting-holder">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h4>{{ vendor_count}} Restaurant's found</h4>
+                                        {% if vendor_count > 1 %}
+                                        <h4>{{ vendor_count}} Restaurants found</h4>
+                                        {% else %}
+                                        <h4>{{ vendor_count}} Restaurant found</h4>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +42,7 @@
                                         <div class="text-holder"> 
                                             <div class="post-title">
                                                 <h5>
-                                                    <a href="listing-detail.html">{{v.name}}</a>
+                                                    <a href="{%url 'vendorDetail' v.vendor_slug %}">{{v.name}}</a>
                                                 </h5>
                                             </div>
                                             {% if v.profile.address %}
@@ -46,7 +50,7 @@
                                             {% endif %}
                                         </div>
                                         <div class="list-option">
-                                            <a href="#" class="viewmenu-btn text-color">View Menu</a>
+                                            <a href="{%url 'vendorDetail' v.vendor_slug %}" class="viewmenu-btn text-color">View Menu</a>
                                         </div>
                                     </li>
                                     {% endfor %}

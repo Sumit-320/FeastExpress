@@ -9,6 +9,7 @@ from django.core.exceptions import PermissionDenied
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from vendor.models import Vendor
+from django.template.defaultfilters import slugify
 # Create your views here.
 def registerUser(request):
     if request.user.is_authenticated:
@@ -61,6 +62,8 @@ def registerVendor(request):
             user.save()
             vendor=v_form.save(commit=False)# data is preserved inside the object
             vendor.user=user
+            v_name = v_form.cleaned_data['name']
+            vendor.vendor_slug = slugify(v_name)+'-'+str(user.id) # for concat always use str only
             u_profile=Profile2.objects.get(user=user)
             vendor.profile=u_profile
             vendor.save()

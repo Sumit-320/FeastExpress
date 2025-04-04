@@ -52,3 +52,26 @@ function onPlaceChanged (){
         }
     })
 }
+
+
+$(document).ready(function(){
+    $('.add_to_cart').on('click',function(e){
+        e.preventDefault();
+        // add to cart takes food id and url, then sends request to url=$... using AJAX get request 
+        food_id = $(this).attr('data-id');
+        url = $(this).attr('data-url');
+        data = {
+            food_id: food_id,
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: url,  // url is addToCart views.py and it gets HttpResonse
+            data:data,
+            success:function(response){
+                console.log(response)
+            }
+        })
+    })
+});
+
