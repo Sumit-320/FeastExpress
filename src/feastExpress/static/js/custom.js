@@ -73,5 +73,12 @@ $(document).ready(function(){
             }
         })
     })
+    
+    // cart qty 
+    $('.item_qty').each(function(){
+        var the_id = $(this).attr('id')
+        var qty = $(this).attr('data-qty')
+        $('#'+the_id).html(qty)
+    })
 });
 
