@@ -15,7 +15,6 @@
 }
 
 .btnx-info {
-    cursor: pointer;
     width: 230px;
     padding: 5px;
     color: #fff;
@@ -49,12 +48,11 @@
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
-    cursor: pointer;
     width:85%;
 }
 
 .btnx-2:hover{
-    background-color:rgb(255, 128, 0);
+    background-color:#ffee07;
     border: none;
     color: rgb(0, 0, 0); 
     padding: 12px 30px; 

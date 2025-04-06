@@ -69,16 +69,121 @@ $(document).ready(function(){
             url: url,  // url is addToCart views.py and it gets HttpResonse
             data:data,
             success:function(response){
-                console.log(response)
+            // refer to views.py
+            console.log(response)
+            if(response.status=='login_required'){
+                swal(response.message,'','info').then(function(){
+                    window.location = '/login'; // redirects to login page on clicking 'OK'
+                })
+            }
+            if(response.status=='Failed'){
+                swal(response.message,'','error')
+            }else{
+                $('#cart_counter').html(response.cart_counter['cart_count']);
+                $('#qty-'+food_id).html(response.qty);
+
+                // checkout sum
+                applyCartAmount(
+                    response.cart_amount['subtotal'],
+                    response.cart_amount['tax'],
+                    response.cart_amount['grand_total'],
+                )
+            }
+            } 
+        })
+    })
+    $('.decrease_cart').on('click',function(e){
+        e.preventDefault();
+        // add to cart takes food id and url, then sends request to url=$... using AJAX get request 
+        food_id = $(this).attr('data-id');
+        url = $(this).attr('data-url');
+        cart_id = $(this).attr('id');
+
+        $.ajax({
+            type: 'GET',
+            url: url,  // url is addToCart views.py and it gets HttpResonse
+            cart_id: cart_id,
+            success:function(response){
+            // refer to views.py
+                if(response.status=='login_required'){
+                    swal(response.message,'','info').then(function(){
+                        window.location = '/login'; // redirects to login page on clicking 'OK'
+                    })
+                }
+                if(response.status=='Failed'){
+                    swal(response.message,'','error')
+                }else{
+
+                    $('#cart_counter').html(response.cart_counter['cart_count']);
+                    $('#qty-'+food_id).html(response.qty);
+                    applyCartAmount(
+                        response.cart_amount['subtotal'],
+                        response.cart_amount['tax'],
+                        response.cart_amount['grand_total'],
+                    )
+                    if(window.location.pathname=='cart/'){
+                        removeCartItem(response.qty,cart_id);
+                        checkEmptyCart();
+                    }
+                }
             }
         })
     })
-    
+    $('.delete_cart').on('click',function(e){
+        e.preventDefault();
+        // add to cart takes food id and url, then sends request to url=$... using AJAX get request 
+        cart_id = $(this).attr('data-id');
+        url = $(this).attr('data-url');
+        
+        $.ajax({
+            type: 'GET',
+            url: url,  // url is addToCart views.py and it gets HttpResonse
+            success:function(response){
+            // refer to views.py
+                
+                if(response.status=='Failed'){
+                    swal(response.message,'','error')
+                }else{
+                    $('#cart_counter').html(response.cart_counter['cart_count']);
+                    swal(response.status,response.message,"success")
+                    applyCartAmount(
+                        response.cart_amount['subtotal'],
+                        response.cart_amount['tax'],
+                        response.cart_amount['grand_total'],
+                    )
+                    removeCartItem(0,cart_id);
+                    checkEmptyCart();
+
+                }
+            }
+        })
+    })
     // cart qty 
     $('.item_qty').each(function(){
         var the_id = $(this).attr('id')
         var qty = $(this).attr('data-qty')
         $('#'+the_id).html(qty)
     })
+    // remove empty cart
+    function checkEmptyCart(){
+        var count = document.getElementById('cart_counter').innerHTML
+        if(count==0){
+            document.getElementById("empty-cart").style.display="block";
+        }
+    }
+    function applyCartAmount(subtotal,taxt,grand_total){
+        if(window.location.pathname=='/cart/'){
+            $('#subtotal').html(subtotal)
+            $('#tax').html(tax)
+            $('#total').html(grand_total)
+        }
+    }
+
+    function removeCartItem(cartItemQty,cart_id){
+        if(cartItemQty<=0){
+            document.getElementById("cart-item-"+cart_id).remove()
+        }
+    }
+    
 });
 
