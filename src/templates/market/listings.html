@@ -47,6 +47,11 @@
                                             </div>
                                             {% if v.profile.address %}
                                             <span><small class="text-muted">{{ v.profile.address}}</small></span>
+                                            <br>
+                                            {% endif %}
+                                            <br>
+                                            {% if source_location %}
+                                            <span><small><b>{{v.kms}} kms</b> away from your search location: {{source_location}}</small></span>
                                             {% endif %}
                                         </div>
                                         <div class="list-option">

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from vendor.models import Vendor
 from menu.models import Category, FoodItem
@@ -6,6 +6,10 @@ from django.db.models import Prefetch
 from .models import Cart
 from market.context_processors import get_cart_counter, get_cart_amount
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.contrib.gis.geos import GEOSGeometry
+from django.contrib.gis.measure import D
+from django.contrib.gis.db.models.functions import Distance
 # Create your views here.
 def market(request):
     vendors=Vendor.objects.filter(is_approved=True,user__is_active = True)[:12]  # user model's is_active
@@ -105,11 +109,39 @@ def deleteCart(request,cart_id):
             return JsonResponse({'status':'Failed','message':'Invalid request!'})
             
 def search(request):
-    r_name  = request.GET['restaurant_name']
-    address = request.GET['address']
-    latitude = request.GET['lat']
-    longitude = request.GET['lng']
-    radius = request.GET['radius']
-    #print(r_name,address,latitude,longitude,radius)
+    if not 'address' in request.GET:
+        return redirect('market')
+    else:
+        keyword  = request.GET['keyword']
+        address = request.GET['address']
+        latitude = request.GET['lat']
+        longitude = request.GET['lng']
+        radius = request.GET['radius']
+        #print(r_name,address,latitude,longitude,radius)
+        fetch_vendors_by_food_item = FoodItem.objects.filter(food_title__icontains=keyword,is_available=True
+        ).values_list('vendor',flat=True) # vendor attribute as FK in vendor model
+        # to filter searched restaurant in vendors database    Q objects from django db complex queries
+        vendors = Vendor.objects.filter(Q(id__in=fetch_vendors_by_food_item) |
+        Q(name__icontains=keyword, is_approved=True, user__is_active=True) ) 
+        
+        if latitude and longitude and radius:
+            pnt = GEOSGeometry('POINT(%s %s)' %(longitude, latitude)) 
+            vendors = Vendor.objects.filter(Q(id__in=fetch_vendors_by_food_item) |
+            Q(name__icontains=keyword, is_approved=True ,user__is_active=True),
+            profile__location__distance_lte=(pnt, D(km=radius))
+            ).annotate(distance = Distance("profile__location",pnt)).order_by("distance")
 
-    return render(request,'market/listings.html')
+            for v in vendors:
+                v.kms = round(v.distance.km,1)
+        
+        count = vendors.count()
+    
+
+        #print(fetch_vendors_by_food_item) 
+        
+        context={
+            'vendors':vendors,
+            'count':count,
+            'source_location':address,
+        }
+        return render(request,'market/listings.html',context)

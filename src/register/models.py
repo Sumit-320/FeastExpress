@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
-
+from django.contrib.gis.db import models as gismodels
+from django.contrib.gis.geos import Point
 class Manager(BaseUserManager): # to manage the custom user
     def create_user(self,username,f_name,l_name,email,password=None):
         if not username:
@@ -91,6 +92,7 @@ class Profile2(models.Model):  # for customer
     pin = models.CharField(max_length=6,blank=True,null =True)
     latitude = models.CharField(max_length=20,blank=True,null =True)
     longitude = models.CharField(max_length=20,blank=True,null =True)
+    location = gismodels.PointField(blank=True,null=True,srid=4326) # spatial data using geoDjango
     create_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
     class Meta:
@@ -98,4 +100,9 @@ class Profile2(models.Model):  # for customer
         verbose_name_plural = 'profiles'
     def __str__(self):
         return self.user.email
-   
+
+    def save(self,*args,**kwargs):
+        if self.latitude and self.longitude:
+            self.location = Point(float(self.longitude),float(self.latitude))
+            return super(Profile2,self).save(*args,**kwargs)
+        return super(Profile2,self).save(*args,**kwargs) 
