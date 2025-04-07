@@ -62,3 +62,7 @@
     cursor: pointer;
     width:85%;
 }
+
+.main-search.fancy.field-holder input[type="text"]{
+    color: #00000000 !important;
+}
