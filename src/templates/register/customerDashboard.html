@@ -3,41 +3,7 @@
 {% block content %}
 <!-- Main Section Start -->
 <div class="main-section">
-    <div class="page-section restaurant-detail-image-section" style=" background: url({%static 'extra-images/bg-image1.jpg'%}) no-repeat scroll 0 0 / cover;">
-        <!-- Container Start -->
-        <div class="container">
-            <!-- Row Start -->
-            <div class="row">
-                <!-- Column Start -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="company-info-detail" style="margin-left:150px">
-                        <div class="company-info">
-                            <div class="img-holder" style="margin-top:-15px;">
-                                <figure>
-                                    <img src="{%static 'extra-images/pf1.png' %}">
-                                </figure>
-                            </div>
-
-                            <div class="text-holder" >
-                                <span class="restaurant-title">Mr. Sumit Vishwakarma</span>
-                                <div class="text">
-                                    <i class="icon-phone"></i>
-                                    <p>+91 7861039245</p>
-                                </div>
-                                <div class="text">
-                                    <i class="icon-location"></i>
-                                    <p>DA-IICT College, <x></x>Reliance Cross Road, Kudasan, Gandhinagar, Gujarat.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column End -->
-            </div>
-            <!-- Row End -->
-        </div>
-        <!-- Container End -->
-    </div>
+     {% include "customers/cover.html" %}
     <div class="page-section account-header buyer-logged-in" style="margin-top:-50px;">
         <div class="container">
             <div class="row">

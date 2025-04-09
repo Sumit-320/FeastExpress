@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'vendor',
     'menu',
     'market',
+    'customers',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'register.context_processors.get_google_api',
                 'market.context_processors.get_cart_counter',
                 'market.context_processors.get_cart_amount',
+                'register.context_processors.get_user_profile',
             ],
         },
     },

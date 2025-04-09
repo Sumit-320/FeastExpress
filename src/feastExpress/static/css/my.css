@@ -100,6 +100,19 @@
     width:85%;
     transform: scale(1.05); /* Enlarges the button */
 }
+.btnx-2 input[type="submit"] {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
 
 .main-search.fancy.field-holder input[type="text"]{
     color: #00000000 !important;

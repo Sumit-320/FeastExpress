@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Main Section Start -->
+<div class="main-section">
+     {% include "customers/cover.html" %}
+    <div class="page-section account-header buyer-logged-in" style="margin-top:-50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-left:-15px;">
+                    <!--Loading the sidebar-->
+                    {% include "parts/customerSidebar.html" %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                        <h5>My Profile</h5>
+                        <form action="{%url 'cProfile'%}" method="POST" enctype="multipart/form-data"> <!--due to pics-->
+                            {% csrf_token %}
+                            <div class="form-fields-set">
+                                <ul>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="restaurant-info">
+                                                    <div class="img-holder">
+                                                        <ul class="foodbakery-gallery-holder">
+                                                            <li class="gal-img">
+                                                                <div class="drag-list">
+                                                                    <div class="item-thumb">
+                                                                        {% if profile.profile_pic %}
+                                                                        <img class="thumbnail" src="{{profile.profile_pic.url}}" alt="Logo">
+                                                                        {% else %}
+                                                                        <img class="thumbnail" src="{% static 'images/default-profile.jpg' %}" alt="Logo">
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="text-holder">
+                                                        <label>Update Business Logo</label>
+                                                        <div class="upload-gallery">
+                                                            {% if profile_form.profile_pic %}
+                                                                {{profile_form.profile_pic}}
+                                                            {% else %}
+                                                            {%static 'images/default-profile.jpg'%}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <label class="text-danger">{{profile_form.profile_pic.errors}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="restaurant-info">
+                                                    <div class="img-holder">
+                                                        <ul class="foodbakery-gallery-holder">
+                                                            <li class="gal-img">
+                                                                <div class="drag-list">
+                                                                    <div class="item-thumb">
+                                                                        {% if profile.bg_pic %}
+                                                                        <img class="thumbnail" src="{{profile.bg_pic.url}}" alt="Backgorund Image">
+                                                                        {% else %}
+                                                                        <img class="thumbnail" src="{% static 'images/default-cover.png' %}" alt="Background Image">
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="text-holder">
+                                                        <label>Update Background Image</label>
+                                                        <div class="upload-gallery">
+                                                            {{profile_form.bg_pic}}
+                                                        </div>
+                                                    </div>
+                                                    <label class="text-danger">{{profile_form.bg_pic.errors}}</label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>First name *</label>
+                                                    {{user_form.f_name}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Last name *</label>
+                                                    {{user_form.l_name}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Mobile No. *</label>
+                                                    {{user_form.contact}}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Address *</label>
+                                                    {{profile_form.address}}
+                                                    <small class="text-muted float-right">powered by Google</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                 <div class="field-holder">
+                                                    <label>City *</label>
+                                                    {{profile_form.city}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Pin Code *</label>
+                                                    {{profile_form.pin}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Latitude *</label>
+                                                    {{profile_form.latitude}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Longitude *</label>
+                                                    {{profile_form.longitude}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>State *</label>
+                                                    {{profile_form.state}}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="field-holder">
+                                                    <label>Country *</label>
+                                                    {{profile_form.country}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div>
+                                    <div class="field-holder">
+                                        <div class="btnx-2" style="width:200px;color: white !important">
+                                            <input  type="submit" value="Update Profile" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+{% include "parts/alerts.html" %}
+{% endblock content %}
