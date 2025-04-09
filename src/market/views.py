@@ -11,6 +11,8 @@ from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import D
 from django.contrib.gis.db.models.functions import Distance
 from datetime import date, datetime
+from orders.forms import OrderForm
+from register.models import Profile2
 # Create your views here.
 def market(request):
     vendors=Vendor.objects.filter(is_approved=True,user__is_active = True)[:12]  # user model's is_active
@@ -154,3 +156,28 @@ def search(request):
             'source_location':address,
         }
         return render(request,'market/listings.html',context)
+
+@login_required(login_url='login')
+def checkout(request):
+    cart_items = Cart.objects.filter(user = request.user).order_by('created_at')
+    cart_count = cart_items.count()
+    if cart_count<=0:
+        return redirect('market')
+    user_profile = Profile2.objects.get(user = request.user)
+    default_values = {
+        'first_name': request.user.f_name,
+        'last_name': request.user.l_name,
+        'phone': request.user.contact,
+        'email': request.user.email,
+        'address': user_profile.address,
+        'country': user_profile.country,
+        'state': user_profile.state,
+        'city': user_profile.city,
+        'pin_code': user_profile.pin,
+    }
+    form = OrderForm(initial=default_values)
+    context={
+        'form':form,
+        'cart_items':cart_items,
+    }
+    return render(request,'market/checkout.html',context)

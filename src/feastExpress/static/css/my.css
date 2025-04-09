@@ -87,19 +87,6 @@
     width:85%;
     transition: transform 0.3s ease; /* Transition for the scaling effect */
 }
-
-.btnx-2:hover{
-    background: linear-gradient(145deg, #e87156, #c63920); /* Same gradient */
-    border: none;
-    color: rgb(255, 255, 255); 
-    padding: 12px 30px; 
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    width:85%;
-    transform: scale(1.05); /* Enlarges the button */
-}
 .btnx-2 input[type="submit"] {
     background: transparent;
     border: none;
@@ -112,6 +99,19 @@
     height: 100%;
     cursor: pointer;
 }
+.btnx-2:hover{
+    background: linear-gradient(145deg, #e87156, #c63920); /* Same gradient */
+    border: none;
+    color: rgb(255, 255, 255); 
+    padding: 12px 30px; 
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width:85%;
+    transform: scale(1.05); /* Enlarges the button */
+}
+
 
 
 .main-search.fancy.field-holder input[type="text"]{
