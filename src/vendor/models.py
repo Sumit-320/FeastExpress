@@ -1,7 +1,7 @@
 from django.db import models
 from register.models import User,Profile2
 from register.utils import send_notification
-from datetime import time
+from datetime import date, time,datetime
 # Create your models here.
 class Vendor(models.Model):
     user = models.OneToOneField(User,related_name='user',on_delete=models.CASCADE) #one to one field
@@ -15,6 +15,22 @@ class Vendor(models.Model):
     
     def __str__(self):
         return self.name
+    def is_open(self):
+        today_date = date.today()
+        today = today_date.isoweekday()
+        curr_hours = OpeningHour.objects.filter(vendor=self, day=today)
+        now = datetime.now()
+        curr_time = now.strftime("%H:%M:%S")  # in str type
+        is_open = None
+        for i in curr_hours:
+            start = str(datetime.strptime(i.from_hour,"%I:%M %p").time()) # 24 hr time format
+            end = str(datetime.strptime(i.to_hour,"%I:%M %p").time())
+            if curr_time>start and curr_time<end:
+                is_open = True
+                break
+            else:
+                is_open = False 
+        return is_open
     
     def save(self,*args,**kwargs):  # when we dont know no. of arguments initially
         if self.pk is not None:

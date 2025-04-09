@@ -28,11 +28,10 @@
 										<ul>
 											<li class="select-location">
 												<div class="foodbakery-locations-fields-group foodbakery-focus-out" >
-													<span id="foodbakery_radius_location_open333" class="foodbakery-radius-location" style="margin-right:-32px;"><i class="icon-target5"></i></span>
+													<span class="foodbakery-search-location-icon" style="margin-left:18px;"><i class="icon-location"></i></span>
 													<input type="text" name="address" id="id_address" placeholder="All Locations" style="border-radius:10px !important;font-size:13px;width:285px;margin-left:19px;" >
 													<input type="hidden" name="lat" value="" id="id_latitude">
 													<input type="hidden" name="lng" value="" id="id_longitude">
-													<span id="foodbakery_radius_location_open333" class="foodbakery-radius-location" style="margin-right:-32px;"><i class="icon-target5"></i></span>
 
 												</div>
 												
@@ -190,9 +189,16 @@
 												<a href="#"><img src="{% static "extra-images/rst13.jpg" %}" class="img-thumb wp-post-image" alt=""></a>
 											{% endif %}
 										</figure>
+										<!--Dynamic Bussiness Hours based open/close-->
+										{% if v.is_open %}
+										<span class="restaurant-status open">
+											<em class="bookmarkRibbon"></em>Open
+										</span>
+										{% else %}
 										<span class="restaurant-status close">
 											<em class="bookmarkRibbon"></em>Close
 										</span>
+										{% endif %}
 									</div>
 									<div class="text-holder">
 										{% comment %} <div class="list-rating">

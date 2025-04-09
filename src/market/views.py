@@ -33,6 +33,8 @@ def vendorDetail(request,vendor_slug):
     today = today_date.isoweekday()
     opening_hours = OpeningHour.objects.filter(vendor = vendor).order_by('day','-from_hour')
     curr_hours = OpeningHour.objects.filter(vendor=vendor, day=today)
+
+
     if request.user.is_authenticated:
         cart_items = Cart.objects.filter(user = request.user)
     else:
