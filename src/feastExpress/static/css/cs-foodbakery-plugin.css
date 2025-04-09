@@ -111,7 +111,7 @@
 .delivery-timing ul li a i { color: #2f313a; line-height: 19px; font-size: 22px; float: right; }
 .delivery-timing ul li a { display: inline-block; text-decoration: none; outline: none; -webkit-box-shadow: none; box-shadow: none; border: 0; width: 100%; padding: 8px 10px 8px 18px; color: #2f313a; font: 400 14px/20px 'Open Sans', sans-serif; word-spacing: 1px; letter-spacing: 0; text-transform: none; }
 .delivery-timing ul li a span { font: 400 14px/16px 'Open Sans', sans-serif; letter-spacing: 0; word-spacing: 0; text-transform: none; margin: 0 4px 0 0; }
-.delivery-timing ul li ul.delivery-dropdown { position: absolute; left: 0; top: 100%; margin: -3px 0 0 0; display: none; padding: 0; background: #FFFFFF; z-index: 10; }
+.delivery-timing ul li ul.delivery-dropdown { position: absolute; left: 0; top: 100%; margin: -3px 0 0 0; display: none; padding: 0; background: #FFFFFF; z-index: 1000; }
 .delivery-timing ul li.menu-open { -webkit-box-shadow: 0px 0px 5px 0px rgba(47, 49, 58, 0.2); box-shadow: 0px 0px 5px 0px rgba(47, 49, 58, 0.2); background-color: #fff; }
 .delivery-timing ul li.menu-open ul.delivery-dropdown { display: block; background-color: #fff; z-index: 5; border-bottom: 1px solid #dee1e9; -webkit-box-shadow: 0px 2px 2px 0px rgba(47, 49, 58, 0.2); box-shadow: 0px 2px 2px 0px rgba(47, 49, 58, 0.2); border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; }
 .delivery-timing ul li ul.delivery-dropdown li { border-radius: 0; line-height: normal; border-bottom: 1px solid #dee1e9; background-color: #fff; }

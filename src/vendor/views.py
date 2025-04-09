@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from register.forms import UserProfileForm
 from .forms import VendorForm, OpeningHourForm
 from register.models import Profile2
@@ -10,7 +10,7 @@ from register.views import validateSeller
 from menu.forms import CategoryForm,FoodItemForm
 from django.template.defaultfilters import slugify
 from django.db import IntegrityError
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
 @login_required(login_url='login')
@@ -218,11 +218,14 @@ def addOpeningHours(request):
 
                 return JsonResponse(response)
             except IntegrityError as e:
-                response = {'status':  'failed'}
+                response = {'status':  'failed','message':from_hour+'-'+to_hour+'already exists for this day!','error':str(e)}
                 return JsonResponse(response)
-
-
         else:
             HttpResponse('Invalid Reqest')
 
-    return HttpResponse("Add Opening Hours")
+def removeOpeningHours(request,pk=None):
+    if request.user.is_authenticated:
+        if request.headers.get('x-requested-with')== 'XMLHttpRequest':  # ajax request
+            hour = get_object_or_404(OpeningHour,pk=pk)
+            hour.delete()
+            return JsonResponse({'status':'success','id':pk})

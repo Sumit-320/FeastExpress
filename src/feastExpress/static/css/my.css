@@ -18,16 +18,18 @@
     width: 230px;
     padding: 5px;
     color: #fff;
-    background-color: #7f7878;
+    background: linear-gradient(145deg,#e87156, #c63920); /* Same gradient */
     border-color: #000;
     border-radius:8px;
+    transition: transform 0.3s ease;
 }
 
 .btnx-info:hover {
     cursor: pointer;
-    color: #000000;
-    background-color: #c7b213;
+    color: #ffffff;
+    background: linear-gradient(145deg, #ff7e5f, #feb47b); /* Same gradient */
     border-color: #c7b213;
+    transform: scale(1.05); /* Enlarges the button */
 }
 
 .footer-link {
@@ -41,7 +43,7 @@
 }
 
 .btnx-2{
-    background-color:rgb(129, 122, 122);
+    background: linear-gradient(145deg,#e87156, #c63920); /* Same gradient */
     border: none;
     color: white; 
     padding: 12px 30px; 
@@ -49,20 +51,151 @@
     font-weight: bold;
     border-radius: 5px;
     width:85%;
+    transition: transform 0.3s ease; /* Transition for the scaling effect */
 }
 
 .btnx-2:hover{
-    background-color:#ffee07;
+    background: linear-gradient(145deg, #e87156, #c63920); /* Same gradient */
     border: none;
-    color: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255); 
     padding: 12px 30px; 
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
     width:85%;
+    transform: scale(1.05); /* Enlarges the button */
 }
 
 .main-search.fancy.field-holder input[type="text"]{
     color: #00000000 !important;
+}
+/* New Dropdown Styles */
+
+/* Wrapper for the entire delivery timing section */
+.delivery-timing2 {
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    padding: 25px 0;
+    border-radius: 8px;
+    margin-left: -3px;    
+}
+.delivery-timing2 .delivery-dropdown a {
+    color: #000;
+    text-decoration: none; /* Removes underline */
+}
+
+/* Optionally, remove any focus outline to prevent a border when focused */
+.delivery-timing2 .delivery-dropdown a:focus {
+    outline: none; /* Removes the focus outline */
+}
+.delivery-timing2 .dropdown-toggle span {
+    margin-left: -10px; /* Adjust this value */
+}
+/* Style for the main dropdown toggle */
+.delivery-timing2 .dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(145deg,#e87156, #c63920); /* Gradient background */
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 320px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect for the dropdown toggle */
+.delivery-timing2 .dropdown-toggle:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Icon for the dropdown arrow */
+.delivery-timing2 .icon-chevron-small-down {
+    margin-left: 8px;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate the arrow when dropdown is open */
+.delivery-timing2 .dropdown-open .icon-chevron-small-down {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu styles */
+.delivery-timing2 .delivery-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: #fff;
+    border-radius: 12px;
+    width: 260px;
+    padding: 12px 0;
+    z-index: 10;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Dropdown fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style for each list item in the dropdown */   
+.delivery-timing2 .delivery-dropdown li {
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #075118;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Remove the border from the last item */
+.delivery-timing2 .delivery-dropdown li:last-child {
+    border-bottom: none;
+}
+
+/* Hover effect for each item */
+.delivery-timing2 .delivery-dropdown li:hover {
+    background-color: #ff7e5f; /* Matching background color */
+    color: #fff; /* White text on hover */
+    transform: translateX(5px); /* Slightly move item on hover */
+}
+
+/* Open dropdown styles */
+.delivery-timing2 .dropdown-open .delivery-dropdown {
+    display: block;
+}
+
+/* Style for closed hours */
+.delivery-timing2 .delivery-dropdown .closed-hours {
+    color: #c33332; /* Red for closed hours */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Responsive design: Adjust dropdown for smaller screens */
+@media (max-width: 768px) {
+    .delivery-timing2 .dropdown-toggle {
+        width: 100%; /* Full width for mobile devices */
+        padding: 12px;
+    }
+
+    .delivery-timing2 .delivery-dropdown {
+        width: 100%; /* Full width dropdown */
+    }
 }

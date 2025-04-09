@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
-from vendor.models import Vendor
+from vendor.models import Vendor, OpeningHour
 from menu.models import Category, FoodItem
 from django.db.models import Prefetch
 from .models import Cart
@@ -10,6 +10,7 @@ from django.db.models import Q
 from django.contrib.gis.geos import GEOSGeometry
 from django.contrib.gis.measure import D
 from django.contrib.gis.db.models.functions import Distance
+from datetime import date, datetime
 # Create your views here.
 def market(request):
     vendors=Vendor.objects.filter(is_approved=True,user__is_active = True)[:12]  # user model's is_active
@@ -28,6 +29,10 @@ def vendorDetail(request,vendor_slug):
             queryset=FoodItem.objects.filter(is_available=True)
         )
     )
+    today_date = date.today()
+    today = today_date.isoweekday()
+    opening_hours = OpeningHour.objects.filter(vendor = vendor).order_by('day','-from_hour')
+    curr_hours = OpeningHour.objects.filter(vendor=vendor, day=today)
     if request.user.is_authenticated:
         cart_items = Cart.objects.filter(user = request.user)
     else:
@@ -36,6 +41,8 @@ def vendorDetail(request,vendor_slug):
         'vendor':vendor,
         'categories':categories,
         'cart_items':cart_items,
+        'opening_hours':opening_hours,
+        'curr_hours':curr_hours,
     }
     return render(request,'market/vendor_detail.html',context)
 

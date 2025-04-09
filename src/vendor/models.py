@@ -52,8 +52,8 @@ class OpeningHour(models.Model):
     is_closed = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('day','from_hour')
-        unique_together = ('day','from_hour','to_hour')  # to check no two time slots for same day
+        ordering = ('day','-from_hour')
+        unique_together = ('vendor','day','from_hour','to_hour')  # to check no two time slots for same day
 
     def __str__(self):
         return self.get_day_display()
