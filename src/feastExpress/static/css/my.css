@@ -13,7 +13,41 @@
     animation-duration: 10s;
     z-index: 9999;
 }
-
+.btnx-3{
+    border-radius: 8px !important;
+     font-size: 18px;
+      padding-left:10px;
+      padding-right:-12px;
+      margin-left:7px !important;
+      font-weight:590 !important;
+      color:black !important;
+      background:
+    linear-gradient(145deg,rgb(252, 227, 66),rgb(183, 153, 0));
+       transition: transform 0.3s ease;
+}
+.btnx-3:hover{
+    border-radius: 8px;
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #000000;
+}
+.btnx-3r{
+    border-radius: 8px !important;
+     font-size: 18px;
+      padding-left:10px;
+      padding-right:-12px;
+      margin-left:7px !important;
+      font-weight:590 !important;
+      color:rgb(255, 255, 255) !important;
+      background: linear-gradient(145deg,#e87156, #c63920);
+       transition: transform 0.3s ease;
+}
+.btnx-3r:hover{
+    border-radius: 8px;
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #fdfdfd;
+}
 .btnx-info {
     width: 230px;
     padding: 5px;
