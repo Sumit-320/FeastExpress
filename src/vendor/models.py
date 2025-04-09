@@ -23,13 +23,14 @@ class Vendor(models.Model):
         curr_time = now.strftime("%H:%M:%S")  # in str type
         is_open = None
         for i in curr_hours:
-            start = str(datetime.strptime(i.from_hour,"%I:%M %p").time()) # 24 hr time format
-            end = str(datetime.strptime(i.to_hour,"%I:%M %p").time())
-            if curr_time>start and curr_time<end:
-                is_open = True
-                break
-            else:
-                is_open = False 
+            if not i.is_closed:
+                start = str(datetime.strptime(i.from_hour,"%I:%M %p").time()) # 24 hr time format
+                end = str(datetime.strptime(i.to_hour,"%I:%M %p").time())
+                if curr_time>start and curr_time<end:
+                    is_open = True
+                    break
+                else:
+                    is_open = False 
         return is_open
     
     def save(self,*args,**kwargs):  # when we dont know no. of arguments initially

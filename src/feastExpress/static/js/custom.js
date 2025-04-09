@@ -90,7 +90,7 @@ $(document).ready(function(){
                 // checkout sum
                 applyCartAmount(
                     response.cart_amount['subtotal'],
-                    response.cart_amount['tax'],
+                    response.cart_amount['tax_dict'],
                     response.cart_amount['grand_total'],
                 )
             }
@@ -123,7 +123,7 @@ $(document).ready(function(){
                     $('#qty-'+food_id).html(response.qty);
                     applyCartAmount(
                         response.cart_amount['subtotal'],
-                        response.cart_amount['tax'],
+                        response.cart_amount['tax_dict'],
                         response.cart_amount['grand_total'],
                     )
                     if(window.location.pathname=='cart/'){
@@ -153,7 +153,7 @@ $(document).ready(function(){
                     swal(response.status,response.message,"success")
                     applyCartAmount(
                         response.cart_amount['subtotal'],
-                        response.cart_amount['tax'],
+                        response.cart_amount['tax_dict'],
                         response.cart_amount['grand_total'],
                     )
                     removeCartItem(0,cart_id);
@@ -176,11 +176,15 @@ $(document).ready(function(){
             document.getElementById("empty-cart").style.display="block";
         }
     }
-    function applyCartAmount(subtotal,taxt,grand_total){
+    function applyCartAmount(subtotal,tax_dict,grand_total){
         if(window.location.pathname=='/cart/'){
             $('#subtotal').html(subtotal)
-            $('#tax').html(tax)
             $('#total').html(grand_total)
+            for(key1 in tax_dict){
+                for(key2 in tax_dict[key1]){
+                    $('#tax-'+key1).html(tax_dict[key1][key2])
+                }
+            }
         }
     }
 
