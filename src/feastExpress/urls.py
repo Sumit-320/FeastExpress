@@ -28,4 +28,5 @@ urlpatterns = [
     path('market/',include('market.urls')),
     path('search/',marketviews.search,name='search'),
     path('checkout/',marketviews.checkout,name='checkout'),
+    path('orders/',include('orders.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
