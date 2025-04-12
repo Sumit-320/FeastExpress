@@ -72,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'register.context_processors.getVendor',
                 'register.context_processors.get_google_api',
+                'register.context_processors.get_paypal_client_id',
                 'market.context_processors.get_cart_counter',
                 'market.context_processors.get_cart_amount',
                 'register.context_processors.get_user_profile',
@@ -169,3 +170,6 @@ GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 os.environ['PATH'] = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
 os.environ['PROJ_LIB'] = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
 GDAL_LIBRARY_PATH = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo\\gdal.dll')
+
+PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID') 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
