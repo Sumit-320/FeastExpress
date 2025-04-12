@@ -41,6 +41,7 @@ class Vendor(models.Model):
                 context = {    # data to provide to the html file
                     'user':self.user,
                     'is_approved':self.is_approved,
+                    'to_email':self.user.email,
                 }
                 if self.is_approved==True: # means vendor approved
                     mail_subject = 'Congrats, your restaurant is approved!'
