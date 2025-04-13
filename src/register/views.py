@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from .forms import UserForm
 from vendor.forms import VendorForm
 from .models import User, Profile2
+from orders.models import Order
 from .utils import detect, send_email, reset_link
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
@@ -205,7 +206,14 @@ def redirectAccount(request):
 @login_required(login_url='login')
 @user_passes_test(validateCustomer)# decorator used to restric users from accessing views 
 def customerDashboard(request):
-    return render(request,'register/customerDashboard.html')
+    orders = Order.objects.filter(user = request.user,is_ordered = True)# to get orders of logged in user
+    recent_orders= orders[:8]
+    context = {
+        'orders':orders,
+        'orders_count':orders.count(),
+        'recent_orders':recent_orders,
+    }
+    return render(request,'register/customerDashboard.html',context)
 
 @login_required(login_url='login')
 @user_passes_test(validateSeller)
@@ -215,5 +223,3 @@ def vendorDashboard(request):
         'vendor':vendor,
     }
     return render(request,'register/vendorDashboard.html',context) # dynamically update vendor info in html
-
-

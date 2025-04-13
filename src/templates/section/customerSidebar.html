@@ -2,10 +2,9 @@
     <div class="user-nav-list" >
         <ul>
             <li class="{% if '/customerDashboard/' == request.path or '/customer/' == request.path %}active{% endif %}"><a href="{% url 'customer' %}"><i class="icon-dashboard3"></i>Dashboard</a></li>
-            <li><a href="{% url 'resetAccountPassword' %}"><i class="icon-shopping_cart"></i>My Orders</a></li>
-            <li class="{%if '/profile/' in request.path %}active{%endif%}"><a href="{% url 'cProfile' %}"><i class="icon-file-text22"></i>My Profile</a></li>
-            <li><a href="{% url 'resetAccountPassword' %}"><i class="icon-unlock-alt"></i>Reset Password</a></li>
-            <li><a href="{% url 'resetAccountPassword' %}"><i class="icon-log-out"></i>Logout</a></li>
+            <li class= "{% if '/my_orders/' in request.path or '/order_detail/' in request.path %}active{% endif %}"><a href="{% url 'customerMyOrders' %}"><i class="icon-shopping_cart"></i>My Orders</a></li>
+            <li class="{%if '/profile/' in request.path %}active{%endif%}"><a href="{% url 'cProfile' %}"><i class="icon-file-text22"></i>Edit Profile</a></li>
+            <li><a href="{% url 'logout' %}"><i class="icon-log-out"></i>Logout</a></li>
         </ul>
     </div>
 </div>
