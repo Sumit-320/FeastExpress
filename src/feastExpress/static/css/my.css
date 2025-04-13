@@ -199,7 +199,31 @@
         transform: translateY(0);
     }
 }
+.cart-icon-wrapper:hover i {
+    color: #c82333; /* darker red on hover */
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+}
+.profile-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.profile-link:hover .profile-img {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.logo-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-logo:hover .logo-img {
+    transform: scale(1.07);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.0);
+}
 /* Style for each list item in the dropdown */   
 .delivery-timing2 .delivery-dropdown li {
     padding: 6px 8px;
