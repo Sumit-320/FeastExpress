@@ -1,0 +1,12 @@
+<!--we can acess django contrib messages with the help of "context processors"-->
+<!--Modules under context processors are available in all files-->
+{% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-{{msg.tags}} show-notification" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{msg}}</strong>
+    </div>
+    {% endfor %}
+{% endif %}

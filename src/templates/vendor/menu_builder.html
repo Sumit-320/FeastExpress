@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-{% include "parts/cover_image.html" %}
+{% include "section/cover_image.html" %}
 <!-- Main Section Start -->
 <div class="main-section">
     <div class="page-section account-header buyer-logged-in">
@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-left:-15px;">
                     <!--Loading the sidebar-->
-                    {% include "parts/vendorSidebar.html" %}
+                    {% include "section/vendorSidebar.html" %}
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="user-dashboard loader-holder">
@@ -52,5 +52,5 @@
     </div>
 </div>
 <!-- Main Section End -->
-{% include "parts/alerts.html" %}
+{% include "section/alerts.html" %}
 {% endblock content %}
