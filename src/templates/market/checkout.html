@@ -141,18 +141,19 @@
                                             </li>
                                             <!--Payment Methods-->
                                             <br>
-                                            <h5>Select Payment Method :</h5>
+                                            
                                             <div class="payment-method">
-                                                &emsp;&emsp;&emsp;&emsp;
+                                                <h5>Select Payment Method :</h5>
+                                                &emsp;&emsp;&emsp;&emsp; 
                                                 <label >
                                                     <input type="radio" name="payment_method" value="PayPal">
                                                     <img src="{% static 'images/PayPal.png' %}" width="180" alt="PayPal">
                                                 </label>
                                                 &emsp;&emsp;&emsp;
-                                                {% comment %} <label >
-                                                    <input type="radio" name="payment_method" value="RazorPay">
-                                                    <img src="{% static 'images/RazorPay.png' %}" width="205" alt="RazorPay">
-                                                </label> {% endcomment %}
+                                                <label >
+                                                    <input type="radio" name="payment_method" value="PayPal">
+                                                    <img src="{% static 'images/RazorPay.png' %}" width="205" alt="PayPal">
+                                                </label>
                                                 
                                             </div>
                                             <span class="text-danger" id="payment-method-error"></span>

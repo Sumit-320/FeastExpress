@@ -36,7 +36,7 @@
                                             </div>
                                             <div class="card-body text-center">
                                                 <a href="#" style="text-decoration: none; color: black;">
-                                                    <h4 style="font-weight: bold;">$1.25 Million</h4>
+                                                    <h4 style="font-weight: bold;">$ {{total_revenue | floatformat:2}}</h4>
                                                 </a>
                                             </div>
                                         </div>
@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="card-body text-center">
                                                 <a href="#" style="text-decoration: none; color: black;">
-                                                    <h4 style="font-weight: bold;">$23K</h4>
+                                                    <h4 style="font-weight: bold;">$ {{current_month_revenue | floatformat:2}}</h4>
                                                 </a>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@
                                                   <tr>
                                                     <td>{{order.order_number}}</td>
                                                     <td>{{order.name}}</td>
-                                                    <td>$ {{order.total}}</td>
+                                                    <td>$ {{order.get_total_by_vendor.grand_total}}</td>
                                                     <td>{{order.created_at}}</td>
                                                     <td><a href="{% url 'vendorOrderDetail' order.order_number %}" class="btnx-3" style = "font-size:14px;padding:3px;">Details</a></td>
                                                   </tr>

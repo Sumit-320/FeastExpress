@@ -1,11 +1,12 @@
 from django.db import models
-
+import json
 # Create your models here.
 from django.db import models
 from register.models import User
 from menu.models import FoodItem
 from vendor.models import Vendor
 
+request_object = ''
 class Payment(models.Model):
     PAYMENT_METHOD = (
         ('PayPal', 'PayPal'),
@@ -57,7 +58,38 @@ class Order(models.Model):
     @property
     def name(self):
         return f'{self.first_name} {self.last_name}'
+    
+    def get_total_by_vendor(self):
+        vendor = Vendor.objects.get(user = request_object.user)
+        subtotal = 0
+        tax = 0 
+        tax_dict = {}
+        if self.total_data:
+            try:
+                total_data = json.loads(self.total_data)
+                vendor_data = total_data.get(str(vendor.id), {})
+                for key, value in vendor_data.items():
+                    subtotal += float(key)
+                    value = value.replace("'", '"')  # normalize quotes if needed
+                    tax_items = json.loads(value)
+                    tax_dict.update(tax_items)
+                    for i in tax_items:
+                        for j in tax_items[i]:
+                            tax += float(tax_items[i][j])
+            except json.JSONDecodeError:
+                return {'subtotal': 0, 'tax_dict': {}, 'grand_total': 0}
 
+                # tax
+                # {'CGST':{'9.00': '10.33'}, 'SGST':{'9.00':'10.33'}}
+        
+        grand_total = float(subtotal)+float(tax)
+        context={
+            'subtotal':subtotal,
+            'tax_dict':tax_dict,
+            'grand_total':grand_total,
+        }
+        return context 
+    
     def order_placed_to(self):
         return ", ".join([str(i) for i in self.vendors.all()])  # to display the multiple vendors the customer placed orders to
     def __str__(self):
