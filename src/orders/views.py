@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from market.models import Cart
+from market.models import Cart, Tax
 from market.context_processors import get_cart_amount
 from .forms import OrderForm
 from .models import Order, Payment, OrderedFood
@@ -9,6 +9,7 @@ from django.http import HttpResponse, JsonResponse
 from register.utils import send_notification
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.decorators import login_required
+from menu.models import FoodItem
 # Create your views here.
 
 @login_required(login_url= 'login')
@@ -17,11 +18,37 @@ def placeOrder(request):
     cart_count = cart_items.count()
     if cart_count<=0:
         return redirect('market')
-    vendor_ids = []
+    vendor_ids = []  # unique
     for i in cart_items:
         if i.fooditem.vendor.id not in vendor_ids:
             vendor_ids.append(i.fooditem.vendor.id)
-    print(vendor_ids)
+    subtotal=0
+
+    # storing the amounts of individual restaurant orders by a customer who ordered from mult restaurants
+    k={} 
+    get_tax = Tax.objects.filter( is_active = True)
+    total_data = {}
+    for i in cart_items:
+        fooditem = FoodItem.objects.get(pk = i.fooditem.id, vendor_id__in = vendor_ids)
+        v_id = fooditem.vendor.id
+        if v_id in k:
+            subtotal = k[v_id]
+            subtotal += (fooditem.price*i.quantity)
+            k[v_id] = subtotal
+        else:
+            subtotal = (fooditem.price * i.quantity)
+            k[v_id]=subtotal
+         # tax_data
+        tax_dict = {}
+        for i in get_tax:
+            tax_type = i.tax_type
+            tax_percentage = i.tax_percentage
+            tax_amount = round((tax_percentage * subtotal)/100,2)
+            tax_dict.update({tax_type:{str(tax_percentage):str(tax_amount)}})
+
+        total_data.update({fooditem.vendor.id:{str(subtotal): str(tax_dict)}})
+    
+    # print(vendor_ids)
     subtotal = get_cart_amount(request)['subtotal']
     total_tax = get_cart_amount(request)['tax']
     grand_total = get_cart_amount(request)['grand_total']
@@ -43,6 +70,7 @@ def placeOrder(request):
             order.user = request.user
             order.total = grand_total
             order.tax_data = json.dumps(tax_data)
+            order.total_data = json.dumps(total_data)
             order.total_tax = total_tax
             order.payment_method = request.POST['payment_method']
             order.save() # order id is generated for order_number field
