@@ -5,11 +5,7 @@
             <li class="{% if 'profile' in  request.path %}active{%endif%}"><a href="{% url 'vProfile' %}"><i class="icon-building"></i>My Restaurant</a></li>
             <li class="{% if 'menu-builder' in  request.path %}active{%endif%}"><a href="{% url 'menuBuilder'%}"><i class="icon-menu5"></i>Menu Builder</a></li> <!--Set class active-->
             <li class="{% if 'opening-hourr' in  request.path %}active{%endif%}"><a href="{% url 'openingHours'%}"><i class="icon-menu5"></i>Opening Hours</a></li> <!--Set class active-->
-            <li><a href="restaurant-orders.html"><i class="icon-add_shopping_cart"></i>Orders</a></li>
-            <li><a href="restaurant-earnings.html"><i class="icon-money"></i>Earnings</a></li>
-            <li><a href="restaurant-statement.html"><i class="icon-file-text22"></i>Statement</a></li>
-            <li><a href="restaurant-change-password.html"><i class="icon-unlock-alt"></i>Change Password</a></li>
-            <li><a class="logout-btn" href="registration.html"><i class="icon-log-out"></i>Signout</a></li>
+            <li><a href="{% url 'logout'%}"><i class="icon-log-out"></i>Signout</a></li>
         </ul>
     </div>
 </div>

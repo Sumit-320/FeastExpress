@@ -11,7 +11,7 @@ from menu.forms import CategoryForm,FoodItemForm
 from django.template.defaultfilters import slugify
 from django.db import IntegrityError
 from django.http import JsonResponse, HttpResponse
-
+from orders.models import Order, OrderedFood
 # Create your views here.
 @login_required(login_url='login')
 @user_passes_test(validateSeller)
@@ -229,3 +229,16 @@ def removeOpeningHours(request,pk=None):
             hour = get_object_or_404(OpeningHour,pk=pk)
             hour.delete()
             return JsonResponse({'status':'success','id':pk})
+
+def orderDetail(request,order_number):
+    try:
+        order = Order.objects.get(order_number=order_number,is_ordered=True)
+        ordered_food = OrderedFood.objects.filter(order = order,fooditem__vendor = Vendor.objects.get(user = request.user))  # fooditem has a FK to orders model
+        context={
+            'order': order,
+            'ordered_food':ordered_food,
+        }
+    except:
+        return redirect('vendors')
+    
+    return render(request,'vendor/order_detail.html',context)

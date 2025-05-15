@@ -1,6 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages, auth
 from .forms import UserForm
+from datetime import datetime
 from vendor.forms import VendorForm
 from .models import User, Profile2
 from orders.models import Order
@@ -11,6 +12,8 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from vendor.models import Vendor
 from django.template.defaultfilters import slugify
+import datetime
+
 # Create your views here.
 def registerUser(request):
     if request.user.is_authenticated:
@@ -219,7 +222,12 @@ def customerDashboard(request):
 @user_passes_test(validateSeller)
 def vendorDashboard(request):
     vendor = Vendor.objects.get(user=request.user)# req.user-> logged in user!
+    orders = Order.objects.filter(vendors__in= [vendor.id],is_ordered=True).order_by('-created_at')
+    recent_orders = orders[:10]
+   
     context={
-        'vendor':vendor,
+        'orders':orders,
+        'orders_count':orders.count(),
+        'recent_orders':recent_orders,
     }
     return render(request,'register/vendorDashboard.html',context) # dynamically update vendor info in html

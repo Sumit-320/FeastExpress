@@ -17,7 +17,11 @@ def placeOrder(request):
     cart_count = cart_items.count()
     if cart_count<=0:
         return redirect('market')
-    
+    vendor_ids = []
+    for i in cart_items:
+        if i.fooditem.vendor.id not in vendor_ids:
+            vendor_ids.append(i.fooditem.vendor.id)
+    print(vendor_ids)
     subtotal = get_cart_amount(request)['subtotal']
     total_tax = get_cart_amount(request)['tax']
     grand_total = get_cart_amount(request)['grand_total']
@@ -43,6 +47,7 @@ def placeOrder(request):
             order.payment_method = request.POST['payment_method']
             order.save() # order id is generated for order_number field
             order.order_number = generate_order_number(order.id)
+            order.vendors.add(*vendor_ids)  # recursively add
             order.save()
             context = {
                 'order':order,
@@ -105,10 +110,10 @@ def payments(request):
             'user': request.user,
             'order': order,
             'to_email': order.email,
-            # 'ordered_food': ordered_food,
-            # 'domain': get_current_site(request),
-            # 'customer_subtotal': customer_subtotal,
-            # 'tax_data': tax_data,
+             'ordered_food': ordered_food,
+            'domain': get_current_site(request),
+            'customer_subtotal': customer_subtotal,
+            'tax_data': tax_data,
         }
         send_notification(mail_subject, mail_template, context)
         # return HttpResponse('email sent to user!')
