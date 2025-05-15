@@ -1,10 +1,11 @@
 <div class="user-account-nav user-account-sidebar">
     <div class="user-nav-list">
         <ul>
-            <li class="{% if '/register/vendorDashboard/' == request.path or '/register/vendor/' == request.path%}active{%endif%}"><a href="{% url 'vendorDashboard' %}"><i class="icon-dashboard3"></i>Dashboard</a></li>
+            <li class="{% if '/vendorDashboard/' == request.path or '/register/vendor/' == request.path%}active{%endif%}"><a href="{% url 'vendorDashboard' %}"><i class="icon-dashboard3"></i>Dashboard</a></li>
             <li class="{% if 'profile' in  request.path %}active{%endif%}"><a href="{% url 'vProfile' %}"><i class="icon-building"></i>My Restaurant</a></li>
-            <li class="{% if 'menu-builder' in  request.path %}active{%endif%}"><a href="{% url 'menuBuilder'%}"><i class="icon-menu5"></i>Menu Builder</a></li> <!--Set class active-->
-            <li class="{% if 'opening-hourr' in  request.path %}active{%endif%}"><a href="{% url 'openingHours'%}"><i class="icon-menu5"></i>Opening Hours</a></li> <!--Set class active-->
+            <li class="{% if 'menu-builder' in  request.path %}active{%endif%}"><a href="{% url 'menuBuilder'%}"><i class="icon-menu4"></i>Menu Builder</a></li> <!--Set class active-->
+            <li class="{% if 'opening-hour' in  request.path %}active{%endif%}"><a href="{% url 'openingHours'%}"><i class="icon-clock"></i>Opening Hours</a></li> <!--Set class active-->
+            <li class="{% if '/my_orders/' in request.path %}active{% endif %}"><a href="{% url 'vendorMyOrders' %}"><i class="icon-add_shopping_cart"></i>Orders</a></li>            
             <li><a href="{% url 'logout'%}"><i class="icon-log-out"></i>Signout</a></li>
         </ul>
     </div>

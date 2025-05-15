@@ -21,9 +21,9 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="user-orders-list" style="margin-bottom:-35px;">
                                         <div class="responsive-table">
-                                            <table class="table table-hover">
+                                            <table class="table table-hover" id="myOrdersTable">
                                                 <thead>
-                                                  <tr>
+                                                  <tr style="height: 50px;">
                                                     <th scope="col">Order #</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Amount</th>
@@ -33,7 +33,7 @@
                                                 </thead>
                                                 <tbody>
                                                     {% for order in orders %}
-                                                  <tr>
+                                                  <tr style="height: 50px;">
                                                     <td><b><a style="color:darkred;" href="{% url 'orderDetails' order.order_number%}">{{order.order_number}}</b></a></td>
                                                     <td>{{order.name}}</td>
                                                     <td>$ {{order.total}}</td>

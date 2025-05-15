@@ -16,6 +16,8 @@
                         <div class="user-holder">
                             <div class="container mt-4">
                                 <h5 class="text-uppercase font-weight-bold" style="color: black;">Overview</h5>
+                                <p>Logged in as: <b>{{user.email}}</b></p>
+
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="card" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border: none;">
@@ -32,7 +34,7 @@
                                     <div class="col-lg-8 col-md-6">
                                         <div class="card" style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); border: none;">
                                             <div class="card-header text-white text-center" style="background-color:rgb(98, 7, 7); font-weight: bold;">
-                                                <i class="icon-user"></i> Logged in as: <b>{{user.email}}</b>
+                                                <i class="icon-user"></i> User: <b>{{user.f_name}} {{user.l_name}}</b>
                                             </div>
                                             <div class="card-body text-center">
                                                 <a href="{% url 'cProfile'%}" style="color: black;">
