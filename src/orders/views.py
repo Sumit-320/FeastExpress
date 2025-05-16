@@ -138,7 +138,7 @@ def payments(request):
             'user': request.user,
             'order': order,
             'to_email': order.email,
-             'ordered_food': ordered_food,
+            'ordered_food': ordered_food,
             'domain': get_current_site(request),
             'customer_subtotal': customer_subtotal,
             'tax_data': tax_data,

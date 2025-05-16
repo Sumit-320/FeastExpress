@@ -31,6 +31,7 @@ def send_email(request,user,mail_subject,mail_template):
     })
     to_email= user.email
     mail = EmailMessage(mail_subject,message,email_sender,to=[to_email]) #creates an instance of Django's EmailMessage class
+    mail.content_subtype="html"
     mail.send()
 
 def reset_link(request,user,mail_subject,mail_template):
@@ -45,6 +46,7 @@ def reset_link(request,user,mail_subject,mail_template):
     })
     to_email= user.email
     mail = EmailMessage(mail_subject,message,email_sender,to=[to_email]) #creates an instance of Django's EmailMessage class
+    mail.content_subtype="html"
     mail.send()
 
 def send_notification(mail_subject,mail_template,context):  # this util func is used at many places-- application approval/rejection etc.

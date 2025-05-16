@@ -34,8 +34,8 @@ def registerUser(request):
 
             # email verification of customer using utility function
             mail_subject='FeastExpress Account Activation Mail'
-            mail_template='email/acc_verify.html'
-            send_email(request,user,mail_subject,mail_template)
+            email_template='email/acc_verify.html'
+            send_email(request,user,mail_subject,email_template)
             messages.success(request,"User Registered Successfully!")
             return redirect('signup')
         else:
