@@ -33,3 +33,28 @@ def order_total_by_vendor(order, vendor_id):
     }
 
     return context
+
+def order_total_by_vendor(order,vendor_id):
+    total_data = json.loads(order.total_data)
+    data = total_data.get(str(vendor_id))
+    subtotal = 0
+    tax=0
+    tax_dict={}
+
+    for key, value in data.items():
+        subtotal += float(key)
+        value = value.replace("'", '"')  # normalize quotes if needed
+        tax_items = json.loads(value)
+        tax_dict.update(tax_items)
+        for i in tax_items:
+            for j in tax_items[i]:
+                tax += float(tax_items[i][j])
+
+    grand_total = float(subtotal)+float(tax)
+    context={
+        'subtotal':subtotal,
+        'tax_dict':tax_dict,
+        'grand_total':grand_total,
+    }
+    return context 
+                        
