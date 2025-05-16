@@ -19,9 +19,8 @@
                             <ul>
                                 <li class="location-has-children choose-location">
                                     <form action="#">
-                                        <input type="text" value="" name="location" id="location" placeholder="Enter your current location or click on the location button -->" autocomplete="off" class="deploy6a">
+                                        <input type="text" value="" name="location" id="location" placeholder="Enter your current location or click on the location button -->" autocomplete="off" class="deploy6a" style="margin-left:-18px; width: 473px; font-size: 15px; border-radius:20px; background-color:#fef9f3; border: 2.9px solid #e0a96d; box-shadow: 0 4px 8px rgba(0,0,0,0.4);">
                                         <span id="foodbakery_radius_location_open" class="foodbakery-radius-location" onclick = "getLocation()" style="margin-right:-158px"><i class="icon-target5"></i></span>
-                                        
                                     </form>
                                 </li>
                             </ul>
@@ -32,7 +31,7 @@
                         <div class="login-option d-flex align-items-center" style="gap: 15px;">
                             
                             {% if user.is_authenticated %}
-                            <a href="{% url 'cart' %}" class="cart-icon-wrapper" style="position: relative; display: inline-block;">
+                            <a href="{% url 'cart' %}" class="cart-icon-wrapper for-cart" style="position: relative; display: inline-block;">
                                 <i class="fa fa-shopping-cart text-danger" style="font-size: 24px;"></i>
                                 <span class="badge badge-warning" id="cart_counter"
                                       style="position: absolute; top: -5px; right: -15px; border-radius: 50%; font-size: 12px;">
@@ -41,21 +40,21 @@
                             </a>
                             
                             <a  href="{% url 'redirectAccount' %}" class="profile-link" style="margin-right:10px !important; padding:10px 10px;">
-                                <img src="{% static 'images/default-profile.jpg' %}" alt="My Profile"  class = "profile-img" style="height: 50px; width: 50px;">
+                                <img src="{% static 'images/default-profile.jpg' %}" alt="My Profile"  class = "profile-img for-profile" style="height: 50px; width: 50px;">
                             </a>
                             
-                            <a href="{% url 'market' %}" class="btnx-3" style="width:203px;color:black !important;margin-left:-10px !important;font-size:18px;margin-right:40px;padding:10px;">Nearby Restaurants</a> 
+                            <a href="{% url 'market' %}" class="btnx-3 for-buttons" style="width:203px;color:black !important;margin-left:-10px !important;font-size:18px;margin-right:40px;padding:10px;">Nearby Restaurants</a> 
                             {% comment %} <a class="btnx-3" href="{% url 'redirectAccount' %}" style="color:black !important;margin-left: -5px !important;margin-right:0px !important; padding: 10px 10px; color: bg border-radius: 5px; font-size: 18px;">Contact</a> {% endcomment %}
-                            <a class="btnx-3r" href="{% url 'logout' %}" style="margin-left:-27px !important;margin-right: -80px; padding: 10px 10px; color: bg border-radius: 5px; font-size: 18px;">Logout</a>
+                            <a class="btnx-3r for-logout" href="{% url 'logout' %}" style="margin-left:-27px !important;margin-right: -80px; padding: 10px 10px; color: bg border-radius: 5px; font-size: 18px;">Logout</a>
                             
                             {% else %}
-                            <a href="{% url 'market' %}" class="btnx-3" style="width:111px;color:black !important;margin-right:-90px !important;font-size:15px;padding:10px;">Eats Nearby</a> 
+                            <a href="{% url 'market' %}" class="btnx-3 for-regeat-button" style="width:111px;color:black !important;margin-right:-90px !important;font-size:15px;padding:10px;">Eats Nearby</a> 
                             <!-- Login button -->
-                            <a class="btnx-3" href="{% url 'login' %}" style="margin-left: 90px!important; padding: 10px 10px; color: black; border-radius: 5px; font-size: 15px;margin-right:-90px;">LogIn</a>
+                            <a class="btnx-3 for-regl-button" href="{% url 'login' %}" style="margin-left: 90px!important; padding: 10px 10px; color: black; border-radius: 5px; font-size: 15px;margin-right:-90px;">LogIn</a>
                             <!-- Sign Up button -->
-                            <a class="btnx-3" href="{% url 'signup' %}" style="margin-left: 90px!important;margin-right:-80px; padding: 10px 10px; color: black; border-radius: 5px; font-size: 15px;">SignUp</a>
+                            <a class="btnx-3 for-regs-button" href="{% url 'signup' %}" style="margin-left: 90px!important;margin-right:-80px; padding: 10px 10px; color: black; border-radius: 5px; font-size: 15px;">SignUp</a>
                             <!-- Register button -->
-							<a class="btnx-3" href="{% url 'registerVendor' %}" style=" margin-left: 80px!important;margin-right:-80px;padding: 10px 10px; color: black; border-radius: 5px; font-size: 15px; white-space: nowrap;">Register Business</a>
+							<a class="btnx-3 for-regb-button" href="{% url 'registerVendor' %}" style=" margin-left: 80px!important;margin-right:-80px;padding: 10px 10px; color: black; border-radius: 5px; font-size: 15px; white-space: nowrap;">Register Business</a>
                             {% endif %}
                         </div>
                     </div>

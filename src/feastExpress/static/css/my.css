@@ -338,55 +338,71 @@
 .login-webpage{
     height:400px; width:450px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
 }
+
+.for-register-vendor{
+    margin-left:155px;width:565px;height:650px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;
+}
+.for-register-user{
+    margin-left:155px;width: 565px;height:650px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;
+}
 @media only screen and (max-width: 480px){
     .deploy1a{ 
-      width:215px;
+      width:100% !important;
       border-radius:8px;
       font-size: 13px;
     }
     .deploy2a{
-        margin-left:-2px;
+        margin-left:-2px !important;
+    }
+    .for-main-page-loc{
+        margin-left: -240px !important;
+        width: 600px !important;
     }
     .deploy3a{
         border-radius:10px !important;
         font-size:13px;
-        width:215px;
+        width:100% !important;
         margin-left:0px;
     }
     .deploy4a{
         height:49px;
         border-radius:8px;
-        width:215px;
+        width:100% !important;
+        margin-left: 0px !important;
+    }
+    .for-home-enter{
+        margin-left: 0px !important;
     }
     .deploy5a{
         color:black !important;
         background-color:  rgba(255, 255, 255, 0.5);
         padding-left:22px;
-        padding-top:10px;
-        padding-bottom:10px;
-        padding-right:2px;
+        padding-top:2px;
+        padding-bottom:2px;
+        padding-right:4px;
         border-radius: 5px;
-        margin-left:-130px;
-        margin-right:50px;
+        margin-left:-180px;
+        margin-right:10px;
+        font-size: 12px !important;
     }  
     .deploy6a{
-        margin-left:-18px;
-        width: 403px;
+        margin-left:-28px;
+        width: 393px !important;
         font-size: 15px;
         border-radius:20px;
         background-color:#fef9f3 !important;
-        border: 2.9px solid #e0a96d;
+        border: 2.9px solid #e0a96d !important;
         box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     .login-webpage{
-        height:500px; width:400px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
+        height:500px !important; width:400px !important; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
     } 
     .for-email{
         border-radius: 5px;
         border: 1px solid #ccc;
          padding: 10px;
           font-size: 16px; 
-          width: 82%; 
+          width: 82% !important; 
           margin-bottom: 15px;
             margin-left: 32px;
     }
@@ -395,15 +411,89 @@
         border: 1px solid #ccc;
          padding: 10px;
           font-size: 16px; 
-          width: 82%; 
+          width: 82% !important; 
           margin-bottom: 15px;
           margin-left: 32px;
     }
-    .page-section restaurant-detail-image-section{
+    .for-footer{
         margin-bottom:0px;
-         height:1660px;
+         height:1660px !important;
           background:rgba(0, 0, 0, 0.82);
            padding-left:20px; 
            text-align: center;
+           margin-bottom: -110px;
     }
+    .for-register-vendor{
+        margin-left:-2px;
+        width:365px;
+        height:100%;
+         padding: 30px;
+        border-radius: 10px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        background-color: #fff;
+    }
+    .for-register-user{
+        margin-left:-2px;width: 100%;height:100%; padding: 0px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;
+    }
+    .for-regb-button{
+        margin-left:-1px !important;
+        margin-right: -45px !important;
+        padding: 7px !important;
+    }
+    .for-regs-button{
+        margin-right: -88px !important;
+        padding: 7px !important;
+    }
+    .for-regl-button{
+        margin-right: -99px !important;
+        padding: 7px !important;
+    }
+    .for-regeat-button{
+        margin-right: 10px !important;
+        padding: 7px !important;
+    }
+    .for-reg-button{
+        margin-left: 50px !important;
+    }
+    .for-reg-fields{
+        margin-left: 43px !important; 
+    }
+    .for-vendor-reg-button{
+        width: 100% !important;
+    }
+    .user-dashboard{
+        width:100% !important;
+        height:100% !important;
+    }
+    .menu-itam-holder .quantity{
+        right:0 !important;
+        margin-top: -30px !important;
+    }
+    .for-buttons{
+        width:100% !important;
+        margin-right: 25px !important;
+        margin-left: -10px;
+    }
+    .for-cart{
+        margin-left:-50px !important;
+        margin-right: -10px !important;
+    }
+    .for-cover-section{
+        margin-left: 10px !important;
+    }
+    .for-profile{
+        margin-left: 2px !important;
+        margin-right: -15px !important;
+    }
+    .for-logout{
+        margin-right: -40px !important;
+    }
+    .for-opening-hours{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+.table td, table th{
+    line-height: 1rem !important;
 }
