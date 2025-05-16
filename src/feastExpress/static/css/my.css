@@ -286,3 +286,124 @@
 .payment-method [type=radio]:checked+img{
     outline:2px solid #000;
 }
+
+
+
+/* before deployment*/
+
+.deploy1a{ 
+    width:185px;
+    border-radius:8px;
+    font-size: 13px;
+}
+
+.deploy2a{
+    margin-left:18px;
+}
+
+.deploy3a{
+    border-radius:10px !important;
+    font-size:13px;
+    width:285px;
+    margin-left:19px;
+}
+.deploy4a{
+    margin-left:18px;
+    height:49px;
+    border-radius:8px;
+    width:95px;
+    margin-right:-3px;
+}
+
+.deploy5a{
+    color:black !important;
+     background-color:  rgba(255, 255, 255, 0.5);
+      padding-left:22px;
+      padding-top:10px;
+      padding-bottom:10px;
+      padding-right:-20px;
+       border-radius: 5px;
+       margin-left:70px;
+       margin-right:140px;
+}
+.deploy6a{
+    margin-left:-18px;
+    width: 473px;
+     font-size: 15px;
+     border-radius:20px;
+     background-color:#fef9f3; 
+     border: 2.9px solid #e0a96d;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+.login-webpage{
+    height:400px; width:450px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
+}
+@media only screen and (max-width: 480px){
+    .deploy1a{ 
+      width:215px;
+      border-radius:8px;
+      font-size: 13px;
+    }
+    .deploy2a{
+        margin-left:-2px;
+    }
+    .deploy3a{
+        border-radius:10px !important;
+        font-size:13px;
+        width:215px;
+        margin-left:0px;
+    }
+    .deploy4a{
+        height:49px;
+        border-radius:8px;
+        width:215px;
+    }
+    .deploy5a{
+        color:black !important;
+        background-color:  rgba(255, 255, 255, 0.5);
+        padding-left:22px;
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-right:2px;
+        border-radius: 5px;
+        margin-left:-130px;
+        margin-right:50px;
+    }  
+    .deploy6a{
+        margin-left:-18px;
+        width: 403px;
+        font-size: 15px;
+        border-radius:20px;
+        background-color:#fef9f3 !important;
+        border: 2.9px solid #e0a96d;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .login-webpage{
+        height:500px; width:400px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
+    } 
+    .for-email{
+        border-radius: 5px;
+        border: 1px solid #ccc;
+         padding: 10px;
+          font-size: 16px; 
+          width: 82%; 
+          margin-bottom: 15px;
+            margin-left: 32px;
+    }
+    .for-password{
+       border-radius: 5px;
+        border: 1px solid #ccc;
+         padding: 10px;
+          font-size: 16px; 
+          width: 82%; 
+          margin-bottom: 15px;
+          margin-left: 32px;
+    }
+    .page-section restaurant-detail-image-section{
+        margin-bottom:0px;
+         height:1660px;
+          background:rgba(0, 0, 0, 0.82);
+           padding-left:20px; 
+           text-align: center;
+    }
+}
