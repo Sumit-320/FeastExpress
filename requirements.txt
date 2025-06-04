@@ -14,4 +14,4 @@ tzdata==2022.1
 urllib3==1.26.9
 gunicorn
 django==5.1.5
-gdal==3.10.2
+gdal==3.6.2
