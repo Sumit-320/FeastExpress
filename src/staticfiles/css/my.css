@@ -1,0 +1,499 @@
+@keyframes show-toast{
+    0% {top: -100%}
+    20% {top: 88px}
+    80% {top: 88px}
+    100% {top: -100%}
+}
+.show-notification{
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    margin-left: -120px;
+    animation-name: show-toast;
+    animation-duration: 10s;
+    z-index: 9999;
+}
+.btnx-3{
+    border-radius: 8px !important;
+     font-size: 18px;
+      padding-left:10px;
+      padding-right:-12px;
+      margin-left:7px !important;
+      font-weight:590 !important;
+      color:black !important;
+      background:
+    linear-gradient(145deg,rgb(252, 227, 66),rgb(183, 153, 0));
+       transition: transform 0.3s ease;
+}
+.btnx-3:hover{
+    border-radius: 8px;
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #000000;
+}
+.btnx-3r{
+    border-radius: 8px !important;
+     font-size: 18px;
+      padding-left:10px;
+      padding-right:-12px;
+      margin-left:7px !important;
+      font-weight:590 !important;
+      color:rgb(255, 255, 255) !important;
+      background: linear-gradient(145deg,#e87156, #c63920);
+       transition: transform 0.3s ease;
+}
+.btnx-3r:hover{
+    border-radius: 8px;
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #fdfdfd;
+}
+.btnx-info {
+    width: 230px;
+    padding: 5px;
+    color: #fff;
+    background: linear-gradient(145deg,#e87156, #c63920); /* Same gradient */
+    border-color: #000;
+    border-radius:8px;
+    transition: transform 0.3s ease;
+}
+
+.btnx-info:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background: linear-gradient(145deg, #ff7e5f, #feb47b); /* Same gradient */
+    border-color: #c7b213;
+    transform: scale(1.05); /* Enlarges the button */
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hover effect for links */
+.footer-link:hover {
+    color:#c46e23; 
+}
+
+.btnx-2{
+    background: linear-gradient(145deg,#e87156, #c63920); /* Same gradient */
+    border: none;
+    color: white; 
+    padding: 12px 30px; 
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    width:85%;
+    transition: transform 0.3s ease; /* Transition for the scaling effect */
+}
+.btnx-2 input[type="submit"] {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.btnx-2:hover{
+    background: linear-gradient(145deg, #e87156, #c63920); /* Same gradient */
+    border: none;
+    color: rgb(255, 255, 255); 
+    padding: 12px 30px; 
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width:85%;
+    transform: scale(1.05); /* Enlarges the button */
+}
+
+
+
+.main-search.fancy.field-holder input[type="text"]{
+    color: #00000000 !important;
+}
+/* New Dropdown Styles */
+
+/* Wrapper for the entire delivery timing section */
+.delivery-timing2 {
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    padding: 25px 0;
+    border-radius: 8px;
+    margin-left: -3px;    
+}
+.delivery-timing2 .delivery-dropdown a {
+    color: #000;
+    text-decoration: none; /* Removes underline */
+}
+
+/* Optionally, remove any focus outline to prevent a border when focused */
+.delivery-timing2 .delivery-dropdown a:focus {
+    outline: none; /* Removes the focus outline */
+}
+.delivery-timing2 .dropdown-toggle span {
+    margin-left: -10px; /* Adjust this value */
+}
+/* Style for the main dropdown toggle */
+.delivery-timing2 .dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(145deg,#e87156, #c63920); /* Gradient background */
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 320px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect for the dropdown toggle */
+.delivery-timing2 .dropdown-toggle:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Icon for the dropdown arrow */
+.delivery-timing2 .icon-chevron-small-down {
+    margin-left: 8px;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate the arrow when dropdown is open */
+.delivery-timing2 .dropdown-open .icon-chevron-small-down {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu styles */
+.delivery-timing2 .delivery-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: #fff;
+    border-radius: 12px;
+    width: 260px;
+    padding: 12px 0;
+    z-index: 10;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Dropdown fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.cart-icon-wrapper:hover i {
+    color: #c82333; /* darker red on hover */
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+}
+.profile-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-link:hover .profile-img {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.logo-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.light-logo:hover .logo-img {
+    transform: scale(1.07);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.0);
+}
+/* Style for each list item in the dropdown */   
+.delivery-timing2 .delivery-dropdown li {
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #075118;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Remove the border from the last item */
+.delivery-timing2 .delivery-dropdown li:last-child {
+    border-bottom: none;
+}
+
+/* Hover effect for each item */
+.delivery-timing2 .delivery-dropdown li:hover {
+    background-color: #ff7e5f; /* Matching background color */
+    color: #fff; /* White text on hover */
+    transform: translateX(5px); /* Slightly move item on hover */
+}
+
+/* Open dropdown styles */
+.delivery-timing2 .dropdown-open .delivery-dropdown {
+    display: block;
+}
+
+/* Style for closed hours */
+.delivery-timing2 .delivery-dropdown .closed-hours {
+    color: #c33332; /* Red for closed hours */
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Responsive design: Adjust dropdown for smaller screens */
+@media (max-width: 768px) {
+    .delivery-timing2 .dropdown-toggle {
+        width: 100%; /* Full width for mobile devices */
+        padding: 12px;
+    }
+
+    .delivery-timing2 .delivery-dropdown {
+        width: 100%; /* Full width dropdown */
+    }
+}
+
+.payment-method [type=radio]{
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.payment-method [type=radio]+img{
+    cursor:pointer;
+    padding: 5px;
+}
+
+.payment-method [type=radio]:checked+img{
+    outline:2px solid #000;
+}
+
+
+
+/* before deployment*/
+
+.deploy1a{ 
+    width:185px;
+    border-radius:8px;
+    font-size: 13px;
+}
+
+.deploy2a{
+    margin-left:18px;
+}
+
+.deploy3a{
+    border-radius:10px !important;
+    font-size:13px;
+    width:285px;
+    margin-left:19px;
+}
+.deploy4a{
+    margin-left:18px;
+    height:49px;
+    border-radius:8px;
+    width:95px;
+    margin-right:-3px;
+}
+
+.deploy5a{
+    color:black !important;
+     background-color:  rgba(255, 255, 255, 0.5);
+      padding-left:22px;
+      padding-top:10px;
+      padding-bottom:10px;
+      padding-right:-20px;
+       border-radius: 5px;
+       margin-left:70px;
+       margin-right:140px;
+}
+.deploy6a{
+    margin-left:-18px;
+    width: 473px;
+     font-size: 15px;
+     border-radius:20px;
+     background-color:#fef9f3; 
+     border: 2.9px solid #e0a96d;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+.login-webpage{
+    height:400px; width:450px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
+}
+
+.for-register-vendor{
+    margin-left:155px;width:565px;height:650px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;
+}
+.for-register-user{
+    margin-left:155px;width: 565px;height:650px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;
+}
+@media only screen and (max-width: 480px){
+    .deploy1a{ 
+      width:100% !important;
+      border-radius:8px;
+      font-size: 13px;
+    }
+    .deploy2a{
+        margin-left:-2px !important;
+    }
+    .for-main-page-loc{
+        margin-left: -240px !important;
+        width: 600px !important;
+    }
+    .deploy3a{
+        border-radius:10px !important;
+        font-size:13px;
+        width:100% !important;
+        margin-left:0px;
+    }
+    .deploy4a{
+        height:49px;
+        border-radius:8px;
+        width:100% !important;
+        margin-left: 0px !important;
+    }
+    .for-home-enter{
+        margin-left: 0px !important;
+    }
+    .deploy5a{
+        color:black !important;
+        background-color:  rgba(255, 255, 255, 0.5);
+        padding-left:22px;
+        padding-top:2px;
+        padding-bottom:2px;
+        padding-right:4px;
+        border-radius: 5px;
+        margin-left:-180px;
+        margin-right:10px;
+        font-size: 12px !important;
+    }  
+    .deploy6a{
+        margin-left:-28px;
+        width: 393px !important;
+        font-size: 15px;
+        border-radius:20px;
+        background-color:#fef9f3 !important;
+        border: 2.9px solid #e0a96d !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .login-webpage{
+        height:500px !important; width:400px !important; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;max-width: 500px;
+    } 
+    .for-email{
+        border-radius: 5px;
+        border: 1px solid #ccc;
+         padding: 10px;
+          font-size: 16px; 
+          width: 82% !important; 
+          margin-bottom: 15px;
+            margin-left: 32px;
+    }
+    .for-password{
+       border-radius: 5px;
+        border: 1px solid #ccc;
+         padding: 10px;
+          font-size: 16px; 
+          width: 82% !important; 
+          margin-bottom: 15px;
+          margin-left: 32px;
+    }
+    .for-footer{
+        margin-bottom:0px;
+         height:1660px !important;
+          background:rgba(0, 0, 0, 0.82);
+           padding-left:20px; 
+           text-align: center;
+           margin-bottom: -110px;
+    }
+    .for-register-vendor{
+        margin-left:-2px;
+        width:365px;
+        height:100%;
+         padding: 30px;
+        border-radius: 10px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        background-color: #fff;
+    }
+    .for-register-user{
+        margin-left:-2px;width: 100%;height:100%; padding: 0px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background-color: #fff;
+    }
+    .for-regb-button{
+        margin-left:-1px !important;
+        margin-right: -45px !important;
+        padding: 7px !important;
+    }
+    .for-regs-button{
+        margin-right: -88px !important;
+        padding: 7px !important;
+    }
+    .for-regl-button{
+        margin-right: -99px !important;
+        padding: 7px !important;
+    }
+    .for-regeat-button{
+        margin-right: 10px !important;
+        padding: 7px !important;
+    }
+    .for-reg-button{
+        margin-left: 50px !important;
+    }
+    .for-reg-fields{
+        margin-left: 43px !important; 
+    }
+    .for-vendor-reg-button{
+        width: 100% !important;
+    }
+    .user-dashboard{
+        width:100% !important;
+        height:100% !important;
+    }
+    .menu-itam-holder .quantity{
+        right:0 !important;
+        margin-top: -30px !important;
+    }
+    .for-buttons{
+        width:100% !important;
+        margin-right: 25px !important;
+        margin-left: -10px;
+    }
+    .for-cart{
+        margin-left:-50px !important;
+        margin-right: -10px !important;
+    }
+    .for-cover-section{
+        margin-left: 10px !important;
+    }
+    .for-profile{
+        margin-left: 2px !important;
+        margin-right: -15px !important;
+    }
+    .for-logout{
+        margin-right: -40px !important;
+    }
+    .for-opening-hours{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+.table td, table th{
+    line-height: 1rem !important;
+}
