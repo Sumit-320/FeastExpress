@@ -168,9 +168,10 @@ DEFAULT_FROM_EMAIL = 'FeastExpress <feastexpress5@gmail.com>'
 # google API
 GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 
-os.environ['PATH'] = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
-os.environ['PROJ_LIB'] = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
-GDAL_LIBRARY_PATH = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo\\gdal.dll')
+if DEBUG == True:
+    os.environ['PATH'] = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo\\data\\proj') + ';' + os.environ['PATH']
+    GDAL_LIBRARY_PATH = os.path.join(BASE_DIR.parent, 'venv\\Lib\\site-packages\\osgeo\\gdal.dll')
 
 PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID') 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
