@@ -92,7 +92,7 @@
 								</figure>
 							</li>
 							{% endfor %}
-							<li class="has-border">
+							{% comment %} <li class="has-border">
 								<figure>
 									<a href="#"><img src="{% static "extra-images/rst1.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
 								</figure>
@@ -152,7 +152,7 @@
 									<a href="#"><img src="{% static "extra-images/rst12.jpg"%}" class="attachment-full size-full wp-post-image" alt=""></a>
 								</figure>
 							</li>
-							
+							 {% endcomment %}
 						</ul>
 					</div>
 				</div>
@@ -215,7 +215,7 @@
 										{% if  v.profile.city and v.profile.state and v.profile.pin%}
 										<span>{{v.profile.city}}, {{v.profile.state }}, {{v.profile.pin}}</span>
 										{% else %}
-										<address> <span>Type of food : </span> Mexican Cuisine, Indian Cuisine</address>
+										<address> <span>Type of food : </span> Indian Cuisine</address>
 										{% endif %}
 										{% if v.kms %}
 											<br>
@@ -229,7 +229,7 @@
 							{% endfor %}
 						
 							
-							
+{% comment %} 							
 							<li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="list-post featured">
 									<div class="img-holder">
@@ -354,7 +354,7 @@
 										<address> <span>Type of food : </span> Korean Food</address>
 									</div>
 								</div>
-							</li>
+							</li> {% endcomment %}
 
 						</ul>
 					</div>
