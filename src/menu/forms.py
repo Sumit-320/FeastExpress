@@ -7,6 +7,7 @@ class CategoryForm(forms.ModelForm):
         model=Category
         fields=['category_name','description'] # attributes from model 'Category' that u want in your form
 
+# important part
 class FoodItemForm(forms.ModelForm):
     image = forms.FileField(widget=forms.FileInput(attrs={'class':'btnx-info'}),validators=[allow_only_images_validator]) # to allow only jpg/png/webp etc
 
