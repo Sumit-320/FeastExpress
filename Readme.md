@@ -3,14 +3,17 @@
 ![Django](https://img.shields.io/badge/Django-4.x-green?logo=django)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?logo=postgresql)
 ![PostGIS](https://img.shields.io/badge/PostGIS-Extension-lightblue)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-purple?logo=bootstrap)
+![Linode](https://img.shields.io/badge/Deployed%20on-Linode-green?logo=linode)
+
 
 **Live Website:** [🌐 FeastExpress Online](https://www.feastexpress.online)
 
 ---
 
 ## 📖 About the Project
-FeastExpress is a **fully-featured Multi-Vendor Restaurant Marketplace** built with Django, PostgreSQL, and PostGIS.  
-It includes **location-based search, nearby restaurants, dynamic business hours, payment gateways, and more** – all production-ready.
+FeastExpress is a **fully-featured Multi-Vendor Food E-Commerce Marketplace** built with Django, Bootstrap, PostgreSQL, and PostGIS.  
+It includes **location-based search, nearby restaurants, dynamic business hours, payment gateway, and more** – all production-ready.
 
 ---
 ## ✨ Features
@@ -89,15 +92,13 @@ python manage.py runserver
 ---
 
 ## 🚀 Key Features Implemented & Skills Gained
-- ✅ End-to-end **multi-vendor platform** implementation in Django, enabling multiple restaurants/vendors to manage their menus and orders independently.
-- ✅ Advanced **shopping cart** functionality with real-time price updates, item quantities, and vendor restrictions.
-- ✅ **User authentication & profiles** using Django’s built-in auth system with custom fields for addresses, profile pictures, and order history.
+- ✅ Online **multi-vendor food e-commerce platform** implementation in Django, enabling multiple restaurant vendors to manage their menus and orders.
+- ✅ Secure email-based authentication with token verification.
+- ✅ **Shopping cart** functionality with item quantities.
 - ✅ **PostGIS spatial queries** to find and sort nearby restaurants based on user location.
 - ✅ **Google Places & Autocomplete API** integration for smooth and accurate address entry during checkout.
 - ✅ Secure **PayPal payment integration** for handling online transactions.
-- ✅ Vendor-specific **analytics dashboards** showing sales reports, best-selling items, and daily performance.
-- ✅ Implementation of **custom middleware** for request logging, session management, and vendor-specific routing.
-
+- ✅ Deployed on **Linode** cloud server with **Nginx as a reverse proxy** and **Gunicorn** as the WSGI application server, ensuring high performance and scalability.
 ---
 
 ## 📋 Prerequisites
@@ -125,3 +126,4 @@ For major changes, please open an issue first to discuss what you’d like to ch
 💼 [LinkedIn](https://www.linkedin.com/in/sumit-vishwakarma-16a601273/) 
 💻 [GitHub](https://github.com/Sumit-320)  
 🌐 [Live Site](https://www.feastexpress.online)  
+
